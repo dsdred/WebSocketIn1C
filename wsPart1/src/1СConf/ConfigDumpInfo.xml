@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ConfigDumpInfo xmlns="http://v8.1c.ru/8.3/xcf/dumpinfo" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" format="Hierarchical" version="2.20">
+	<ConfigVersions>
+		<Metadata name="CommonModule.ВебСокетыКлиентСервер" id="b53a68a6-628a-42d7-b37d-04e415b18d07" configVersion="03eae04876fb194f86a43a6a8dab057100000000"/>
+		<Metadata name="CommonModule.ВебСокетыКлиентСервер.Module" id="b53a68a6-628a-42d7-b37d-04e415b18d07.0" configVersion="20165cb5eb30804bbde5d02f7a742fc900000000"/>
+		<Metadata name="Configuration.Конфигурация" id="b99cf14d-e39d-4650-a0f0-2365949cb59d" configVersion="645ddc221ace3c48884fb15f54ee0eee00000000"/>
+		<Metadata name="InformationRegister.СобытияВебСокеты" id="b89d578d-67a0-472f-b017-a3bd022471d9" configVersion="1501c58724780549849381cb36bb5bdf00000000">
+			<Metadata name="InformationRegister.СобытияВебСокеты.Attribute.Соединение" id="29a06353-7e07-48e1-949d-857fc7467a65"/>
+			<Metadata name="InformationRegister.СобытияВебСокеты.Dimension.Дата" id="3a9442fa-1374-441e-8e7c-403afd67f54f"/>
+			<Metadata name="InformationRegister.СобытияВебСокеты.Dimension.Обработчик" id="3d4dce0f-c106-4636-8edb-2d8256f8ecdb"/>
+			<Metadata name="InformationRegister.СобытияВебСокеты.Dimension.Ключ" id="4a47818a-3997-4df0-a943-ba1f2261bcb4"/>
+			<Metadata name="InformationRegister.СобытияВебСокеты.Attribute.Сообщение" id="4d0f19e8-7b44-4cce-b15a-1478ab473bd7"/>
+			<Metadata name="InformationRegister.СобытияВебСокеты.Attribute.Клиент" id="595243b6-6c91-4f5b-bb62-705703c5b14f"/>
+			<Metadata name="InformationRegister.СобытияВебСокеты.Attribute.Описание" id="de580668-d58e-486e-bd64-8d079eeaaac0"/>
+			<Metadata name="InformationRegister.СобытияВебСокеты.Attribute.Код" id="de9cdb83-0d1b-4dab-9229-003eba7c09bc"/>
+		</Metadata>
+		<Metadata name="InformationRegister.СобытияВебСокеты.Form.ФормаЗаписи" id="1a92e7b3-c998-4772-baf7-f981c0b5ec55" configVersion="a92c3b03173f684d9c5d88198c27cc9800000000"/>
+		<Metadata name="InformationRegister.СобытияВебСокеты.Form.ФормаЗаписи.Form" id="1a92e7b3-c998-4772-baf7-f981c0b5ec55.0" configVersion="dbf4c7086781ff43bf5f9f30cb1336a700000000"/>
+		<Metadata name="Language.Русский" id="ea82820a-f5ae-4de5-812c-e04bd7b8f35f" configVersion="c5e808498096c04d91ed83e4a8a488e100000000"/>
+		<Metadata name="WebSocketClient.WebSocketКлиентTest" id="9f442068-bee0-4472-9376-36896c5ed5fa" configVersion="ad4697de567ab44aa5ce7080964826ee00000000"/>
+		<Metadata name="WebSocketClient.WebSocketКлиентTest.Module" id="9f442068-bee0-4472-9376-36896c5ed5fa.0" configVersion="17f645dc043e6f4299fde16f9849fd5a00000000"/>
+	</ConfigVersions>
+</ConfigDumpInfo>
