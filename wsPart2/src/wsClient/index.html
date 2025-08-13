@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>WebSocket чат</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: 30px auto; }
+    #messages { border: 1px solid #ccc; height: 300px; padding: 10px; overflow-y: auto; margin-bottom: 10px; background: #f9f9f9; }
+    #status { margin-bottom: 10px; font-weight: bold; }
+    input[type="text"] { width: calc(100% - 12px); padding: 5px; margin-bottom: 10px; }
+    button { padding: 7px 15px; }
+  </style>
+</head>
+<body>
+
+  <h1>WebSocket чат</h1>
+
+  <div id="status">Статус: Не подключено</div>
+
+  <input type="text" id="username" placeholder="Введите ваше имя" />
+  <button id="registryButton">Войти</button>
+  <input type="text" id="usernameto" placeholder="Введите имя получателя" />
+  <input type="text" id="messageInput" placeholder="Введите сообщение" />
+  <button id="sendButton">Отправить</button>
+
+  <div id="messages"></div>
+
+  <script>
+    const statusEl = document.getElementById('status');
+    const messagesEl = document.getElementById('messages');
+    const usernameEl = document.getElementById('username');
+    const usernametoEl = document.getElementById('usernameto');
+    const messageInput = document.getElementById('messageInput');
+    const sendButton = document.getElementById('sendButton');
+    const registryButton = document.getElementById('registryButton')
+
+    // Подключение к WebSocket серверу (укажите ваш адрес)
+    const socket = new WebSocket('ws://localhost:3001');
+
+    socket.onopen = () => {
+        statusEl.textContent = 'Статус: Подключено';
+    };
+
+    socket.onmessage = (event) => {
+        const msg = document.createElement('div');
+        msg.textContent = event.data;
+        messagesEl.appendChild(msg);
+        messagesEl.scrollTop = messagesEl.scrollHeight; // прокрутка вниз
+    };
+
+    socket.onclose = () => {
+        statusEl.textContent = 'Статус: Отключено';
+    };
+
+    socket.onerror = (error) => {
+        statusEl.textContent = 'Ошибка: ' + error.message;
+    };
+
+
+    registryButton.onclick = () => {
+        const username = usernameEl.value.trim();
+        if (!username) {
+            alert('Введите имя пользователя');
+            return;
+        }        
+
+        const fullMessage = JSON.stringify({ type: 'register', id: username });
+        console.log(fullMessage)
+        socket.send(fullMessage);
+
+    }
+
+
+    sendButton.onclick = () => {
+        const username = usernameEl.value.trim();
+        const usernameto = usernametoEl.value.trim();
+        const message = messageInput.value.trim();
+       // if (!usernameto) {
+       //     alert('Введите имя пользователя');
+       //     return;
+       // }
+        if (!message) {
+            alert('Введите сообщение');
+            return;
+        }
+
+        console.log('to='+usernameto,'message='+message);
+
+        // Отправляем имя и сообщение в одном сообщении (можно форматировать как JSON)
+        const fullMessage = JSON.stringify({ type: 'message', from: username, to: usernameto, message: message});
+
+        // Вывод отправоенного сообщения
+        const msg = document.createElement('div');
+        msg.textContent = `you: ${message}`;
+        messagesEl.appendChild(msg);
+        messagesEl.scrollTop = messagesEl.scrollHeight; // прокрутка вниз
+
+
+        socket.send(fullMessage);
+        messageInput.value = '';
+    };
+
+    // Также можно отправлять сообщение по нажатию Enter в поле сообщения
+    messageInput.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            sendButton.click();
+        }
+    });
+  </script>
+
+</body>
+</html>

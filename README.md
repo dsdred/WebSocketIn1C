@@ -16,6 +16,9 @@
 
 - *Пример клиентской и серверной части Socket.IO* - wsPart2\src\socketio
 
+- *WebSocet server* - wsPart2\src\wsServer
+
+- *WebSocet client на HTML\JS* - wsPart2\src\wsClient
 
 ---
 
