@@ -21,7 +21,7 @@
 
 **Команды**
 
-- Установка установщика пакетов [npm](https://www.npmjs.com/)
+- Установка установщика пакетов [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
 *npm install -g npm*
 
