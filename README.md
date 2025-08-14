@@ -6,7 +6,7 @@
 
 [Поинтегрируем: WebSocket’ы в платформе 1С. Часть 1](https://infostart.ru/1c/articles/2280032/)
 
-- *WebSocet server* - wsPart1\src\wsServer
+- *WebSocket server* - wsPart1\src\wsServer
 - *Конфигурация 1С* - wsPart1\src\1СConf
 - *Обработка отправки сообщения* - wsPart1\src\1CDataProcessors\1Shot
 
@@ -16,9 +16,9 @@
 
 - *Пример клиентской и серверной части Socket.IO* - wsPart2\src\socketio
 
-- *WebSocet server* - wsPart2\src\wsServer
+- *WebSocket server* - wsPart2\src\wsServer
 
-- *WebSocet client на HTML\JS* - wsPart2\src\wsClient
+- *WebSocket client на HTML\JS* - wsPart2\src\wsClient
 
 ---
 
