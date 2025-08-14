@@ -81,17 +81,17 @@ function sendToUser(id, idFrom, message) {
     
     // Если отправить сообщение неудалось, тогда сообщаем отправителю
     const textERR = `User ${id} not found or not connected`;
-    
+
     if (debuglog) {
       console.log(textERR);
     }
 
-    // проверяем что получатель и оптравитель разные клиенты
-    if (id !== idFrom) {
-      const senderWs = userSockets[idFrom];
-      if (senderWs && senderWs.readyState === WebSocket.OPEN) {
-        senderWs.send(textERR);
-      }
-    }
+    // Если нужно сообщение, что юзер не подключен или не найден. Получит отправитель.
+    //if (id !== idFrom) {
+    //  const senderWs = userSockets[idFrom];
+    //  if (senderWs && senderWs.readyState === WebSocket.OPEN) {
+    //    senderWs.send(textERR);
+    // }
+    //}
   }
 }
