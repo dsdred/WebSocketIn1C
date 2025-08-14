@@ -12,7 +12,7 @@
 
 ---
 
-**Впроцессе...**[Поинтегрируем: WebSocket’ы в платформе 1С. Часть 2](https://infostart.ru/1c/articles/2293957/)
+[Поинтегрируем: WebSocket’ы в платформе 1С. Часть 2](https://infostart.ru/1c/articles/2293957/)
 
 - *Пример клиентской и серверной части Socket.IO* - wsPart2\src\socketio
 - *WebSocket server* - wsPart2\src\wsServer
