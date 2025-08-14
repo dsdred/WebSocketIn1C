@@ -7,8 +7,8 @@
 		<Metadata name="CommonModule.ВебСокетыСервер.Module" id="b53a68a6-628a-42d7-b37d-04e415b18d07.0" configVersion="0ebe96830083a246820b5f4c6ebf8d0000000000"/>
 		<Metadata name="Configuration.Конфигурация" id="b99cf14d-e39d-4650-a0f0-2365949cb59d" configVersion="34af592c49a8d8479d396a2edcbe20d700000000"/>
 		<Metadata name="DataProcessor.КлиентДля2Части" id="69f4ebe6-ae6c-4def-85be-1ca65a811a48" configVersion="698436cde7b85e4e83f9a763c36c324700000000"/>
-		<Metadata name="DataProcessor.КлиентДля2Части.Form.Форма" id="7d06cdfe-7804-4880-a797-b1335a16ced8" configVersion="15c7b366506e094fb485b38ad168cd0600000000"/>
-		<Metadata name="DataProcessor.КлиентДля2Части.Form.Форма.Form" id="7d06cdfe-7804-4880-a797-b1335a16ced8.0" configVersion="0d70c35ae9c2da44b3d784109225ce4800000000"/>
+		<Metadata name="DataProcessor.КлиентДля2Части.Form.Форма" id="7d06cdfe-7804-4880-a797-b1335a16ced8" configVersion="8df38a085cd38944bd6ca760a98a283e00000000"/>
+		<Metadata name="DataProcessor.КлиентДля2Части.Form.Форма.Form" id="7d06cdfe-7804-4880-a797-b1335a16ced8.0" configVersion="f2b6a5f82dcae54984ca5be0a9af35ec00000000"/>
 		<Metadata name="InformationRegister.СобытияВебСокеты" id="b89d578d-67a0-472f-b017-a3bd022471d9" configVersion="1501c58724780549849381cb36bb5bdf00000000">
 			<Metadata name="InformationRegister.СобытияВебСокеты.Attribute.Соединение" id="29a06353-7e07-48e1-949d-857fc7467a65"/>
 			<Metadata name="InformationRegister.СобытияВебСокеты.Dimension.Дата" id="3a9442fa-1374-441e-8e7c-403afd67f54f"/>
