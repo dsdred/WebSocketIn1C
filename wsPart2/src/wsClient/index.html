@@ -5,10 +5,26 @@
   <title>WebSocket чат</title>
   <style>
     body { font-family: Arial, sans-serif; max-width: 600px; margin: 30px auto; }
-    #messages { border: 1px solid #ccc; height: 300px; padding: 10px; overflow-y: auto; margin-bottom: 10px; background: #f9f9f9; }
-    #status { margin-bottom: 10px; font-weight: bold; }
-    input[type="text"] { width: calc(100% - 12px); padding: 5px; margin-bottom: 10px; }
-    button { padding: 7px 15px; }
+    #messages {
+      border: 1px solid #ccc;
+      height: 300px;
+      padding: 10px;
+      overflow-y: auto;
+      margin-bottom: 10px;
+      background: #f9f9f9;
+    }
+    #status {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    input[type="text"] {
+      width: calc(100% - 12px);
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 7px 15px;
+    }
   </style>
 </head>
 <body>
@@ -19,6 +35,7 @@
 
   <input type="text" id="username" placeholder="Введите ваше имя" />
   <button id="registryButton">Войти</button>
+
   <input type="text" id="usernameto" placeholder="Введите имя получателя" />
   <input type="text" id="messageInput" placeholder="Введите сообщение" />
   <button id="sendButton">Отправить</button>
@@ -32,82 +49,126 @@
     const usernametoEl = document.getElementById('usernameto');
     const messageInput = document.getElementById('messageInput');
     const sendButton = document.getElementById('sendButton');
-    const registryButton = document.getElementById('registryButton')
+    const registryButton = document.getElementById('registryButton');
 
-    // Подключение к WebSocket серверу (укажите ваш адрес)
+    sendButton.disabled = true;   // Блокируем отправку сообщений до регистрации
+    messageInput.disabled = true;
+
+    // Подключение к WebSocket серверу — замените адрес на ваш
     const socket = new WebSocket('ws://localhost:3001');
 
     socket.onopen = () => {
-        statusEl.textContent = 'Статус: Подключено';
+      statusEl.textContent = 'Статус: Подключено';
     };
 
     socket.onmessage = (event) => {
-        const msg = document.createElement('div');
+      let data;
+      try {
+        data = JSON.parse(event.data);
+      } catch {
+        data = null;
+      }
+
+      const msg = document.createElement('div');
+
+      if (data && data.type === 'message') {
+        msg.textContent = `${data.from} → ${data.to || 'all'}: ${data.message}`;
+      } else if (data && data.type === 'system') {
+        msg.textContent = 'Системное сообщение: ' + data.message;
+        msg.style.fontStyle = 'italic';
+        msg.style.color = 'gray';
+      } else {
+        // Если сообщение не в формате JSON
         msg.textContent = event.data;
-        messagesEl.appendChild(msg);
-        messagesEl.scrollTop = messagesEl.scrollHeight; // прокрутка вниз
+      }
+
+      messagesEl.appendChild(msg);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
     };
 
     socket.onclose = () => {
-        statusEl.textContent = 'Статус: Отключено';
+      statusEl.textContent = 'Статус: Отключено';
+      sendButton.disabled = true;
+      messageInput.disabled = true;
     };
 
     socket.onerror = (error) => {
-        statusEl.textContent = 'Ошибка: ' + error.message;
+      statusEl.textContent = 'Ошибка: ' + error.message;
     };
-
 
     registryButton.onclick = () => {
-        const username = usernameEl.value.trim();
-        if (!username) {
-            alert('Введите имя пользователя');
-            return;
-        }        
+      const username = usernameEl.value.trim();
+      if (!username) {
+        alert('Введите имя пользователя');
+        return;
+      }
 
-        const fullMessage = JSON.stringify({ type: 'register', id: username });
-        console.log(fullMessage)
-        socket.send(fullMessage);
+      if (socket.readyState !== WebSocket.OPEN) {
+        alert('Соединение не установлено. Попробуйте позже.');
+        return;
+      }
 
-    }
+      // Отправляем серверу сообщение о регистрации
+      const fullMessage = JSON.stringify({ type: 'register', id: username });
+      socket.send(fullMessage);
 
+      // Скрываем поле с именем и кнопку регистрации
+      registryButton.style.display = 'none';
+      usernameEl.style.display = 'none';
 
-    sendButton.onclick = () => {
-        const username = usernameEl.value.trim();
-        const usernameto = usernametoEl.value.trim();
-        const message = messageInput.value.trim();
-       // if (!usernameto) {
-       //     alert('Введите имя пользователя');
-       //     return;
-       // }
-        if (!message) {
-            alert('Введите сообщение');
-            return;
-        }
+      // Разблокируем поле ввода сообщения и кнопку отправки
+      sendButton.disabled = false;
+      messageInput.disabled = false;
 
-        console.log('to='+usernameto,'message='+message);
-
-        // Отправляем имя и сообщение в одном сообщении (можно форматировать как JSON)
-        const fullMessage = JSON.stringify({ type: 'message', from: username, to: usernameto, message: message});
-
-        // Вывод отправоенного сообщения
-        const msg = document.createElement('div');
-        msg.textContent = `you: ${message}`;
-        messagesEl.appendChild(msg);
-        messagesEl.scrollTop = messagesEl.scrollHeight; // прокрутка вниз
-
-
-        socket.send(fullMessage);
-        messageInput.value = '';
+      statusEl.textContent = `Статус: Подключено как ${username}`;
     };
 
-    // Также можно отправлять сообщение по нажатию Enter в поле сообщения
+    sendButton.onclick = () => {
+      const username = usernameEl.value.trim();
+      const usernameto = usernametoEl.value.trim();
+      const message = messageInput.value.trim();
+
+      if (!message) {
+        alert('Введите сообщение');
+        return;
+      }
+
+      if (registryButton.style.display !== 'none') {
+        alert('Сначала войдите в систему');
+        return;
+      }
+
+      if (socket.readyState !== WebSocket.OPEN) {
+        alert('Соединение не установлено. Сообщение не отправлено.');
+        return;
+      }
+
+      const fullMessage = JSON.stringify({
+        type: 'message',
+        from: username, 
+        to: usernameto || null,
+        message: message
+      });
+
+      // Добавляем сообщение в окно чата (от пользователя)
+      const msg = document.createElement('div');
+      msg.textContent = `you → ${usernameto || 'all'}: ${message}`;
+      messagesEl.appendChild(msg);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+
+      socket.send(fullMessage);
+      messageInput.value = '';
+    };
+
+    // Отправлять сообщение по Enter в поле ввода сообщения
     messageInput.addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            sendButton.click();
-        }
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        sendButton.click();
+      }
     });
   </script>
 
 </body>
 </html>
+

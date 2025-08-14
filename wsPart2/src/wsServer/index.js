@@ -30,7 +30,7 @@ server.on('connection', (ws) => {
     } else if (data.type === 'message') {
       
       // если кому незаполнен, тогда отправляем всем кроме автора
-      if (data.to.trim() === '') {
+      if (!data.to) {
         // Отправляем сообщение всем
         for (const id in userSockets) {
           
