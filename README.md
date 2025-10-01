@@ -21,6 +21,19 @@
 
 ---
 
+[Infostart Tech Event 2025. Материалы к докладу "WebSocket'ы — это не больно"](https://event.infostart.ru/2025/agenda/2458720/)
+
+- *WebSocket server* - wsEvent\src\wsServer
+- *Конфигурация 1С с примерами в обаботках* - wsEvent\src\1СConf
+    - Обработка "StandardWebSocketClients" - Стандартная оработка выдернута из платфрормы 8.3.27
+    - Обработка "wsАвторизация" - обработка с примером использования WebSocket-клиент из расширения
+    - Обработка "wsДинамический" - обработка с примером создания диномичерких WebSocket соединений на сервере и на клиенте
+    - Обработка "СоединенияВебсокетов" 
+- *Расшиерение 1С* - wsEvent\src\1СExt
+
+---
+
+
 **Команды**
 
 - Установка установщика пакетов [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
@@ -34,6 +47,10 @@
 - Установка пакета [socket.io](https://socket.io/docs/v4/server-installation/)
 
 *npm install socket.io*
+
+- Запуск WebSocket сервера [nodejs](https://nodejs.org/)
+
+*node index.js*
 
 ---
 
