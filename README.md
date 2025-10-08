@@ -1,5 +1,5 @@
 # WebSocketIn1C
-[![OpenYellow](https://img.shields.io/endpoint?url=https://openyellow.org/data/badges/4/763113633.json)](https://openyellow.org/grid?data=top&repo=763113633)
+[![OpenYellow](https://img.shields.io/endpoint?url=https://openyellow.org/data/badges/6/916237291.json)](https://openyellow.org/grid?data=top&repo=916237291)
 
 Материалы для повторения действий из статей про WebSockets
 
