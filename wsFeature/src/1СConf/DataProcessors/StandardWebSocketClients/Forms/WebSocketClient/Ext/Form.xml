@@ -1,0 +1,623 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Управление WebSocket-клиентом</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="WriteAndClose" id="13">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.WriteAndClose</CommandName>
+				<ExtendedTooltip name="WriteAndCloseРасширеннаяПодсказка" id="14"/>
+			</Button>
+			<Button name="Write" id="23">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<CommandName>Form.Command.Write</CommandName>
+				<ExtendedTooltip name="WriteРасширеннаяПодсказка" id="24"/>
+			</Button>
+			<Button name="Cancel" id="15">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Cancel</CommandName>
+				<ExtendedTooltip name="CancelРасширеннаяПодсказка" id="16"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="MetadataName" id="1">
+			<DataPath>MetadataName</DataPath>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<ListChoiceMode>true</ListChoiceMode>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="MetadataNameКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="MetadataNameРасширеннаяПодсказка" id="3"/>
+			<Events>
+				<Event name="OnChange">MetadataNameOnChange</Event>
+			</Events>
+		</InputField>
+		<InputField name="ClientKey" id="4">
+			<DataPath>ClientKey</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ключ</v8:content>
+				</v8:item>
+			</Title>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="ClientKeyКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="ClientKeyРасширеннаяПодсказка" id="6"/>
+			<Events>
+				<Event name="OnChange">ClientKeyOnChange</Event>
+			</Events>
+		</InputField>
+		<UsualGroup name="MainSettings" id="71">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основные настройки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Main settings</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="MainSettingsРасширеннаяПодсказка" id="72"/>
+			<ChildItems>
+				<CheckBoxField name="Predefined" id="10">
+					<DataPath>Predefined</DataPath>
+					<Enabled>false</Enabled>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Предопределенный</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="PredefinedКонтекстноеМеню" id="11"/>
+					<ExtendedTooltip name="PredefinedРасширеннаяПодсказка" id="12"/>
+				</CheckBoxField>
+				<CheckBoxField name="AutoConnect" id="7">
+					<DataPath>AutoConnect</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подключать автоматически</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="AutoConnectКонтекстноеМеню" id="8"/>
+					<ExtendedTooltip name="AutoConnectРасширеннаяПодсказка" id="9"/>
+				</CheckBoxField>
+				<InputField name="ServerURL" id="20">
+					<DataPath>ServerURL</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>URL Сервера</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Введите URL WebSocket-сервера, начиная с ws:// или wss://</v8:content>
+						</v8:item>
+					</ToolTip>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ServerURLКонтекстноеМеню" id="21"/>
+					<ExtendedTooltip name="ServerURLРасширеннаяПодсказка" id="22"/>
+				</InputField>
+				<InputField name="IBUserName" id="17">
+					<DataPath>IBUserName</DataPath>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="IBUserNameКонтекстноеМеню" id="18"/>
+					<ExtendedTooltip name="IBUserNameРасширеннаяПодсказка" id="19"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ConnectionParameters" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры соединения</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Connection parameters</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="ConnectionParametersРасширеннаяПодсказка" id="26"/>
+			<ChildItems>
+				<InputField name="User" id="27">
+					<DataPath>User</DataPath>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="UserКонтекстноеМеню" id="28"/>
+					<ExtendedTooltip name="UserРасширеннаяПодсказка" id="29"/>
+				</InputField>
+				<InputField name="Password" id="30">
+					<DataPath>Password</DataPath>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<PasswordMode>true</PasswordMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="PasswordКонтекстноеМеню" id="31"/>
+					<ExtendedTooltip name="PasswordРасширеннаяПодсказка" id="32"/>
+				</InputField>
+				<CheckBoxField name="UseOSAuthentication" id="33">
+					<DataPath>UseOSAuthentication</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="UseOSAuthenticationКонтекстноеМеню" id="34"/>
+					<ExtendedTooltip name="UseOSAuthenticationРасширеннаяПодсказка" id="35"/>
+				</CheckBoxField>
+				<CheckBoxField name="UseOSProxy" id="39">
+					<DataPath>UseOSProxy</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="UseOSProxyКонтекстноеМеню" id="40"/>
+					<ExtendedTooltip name="UseOSProxyРасширеннаяПодсказка" id="41"/>
+				</CheckBoxField>
+				<InputField name="Timeout" id="36">
+					<DataPath>Timeout</DataPath>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<SpinButton>true</SpinButton>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="TimeoutКонтекстноеМеню" id="37"/>
+					<ExtendedTooltip name="TimeoutРасширеннаяПодсказка" id="38"/>
+				</InputField>
+				<LabelDecoration name="Headers" id="73">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Заголовки:</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="HeadersКонтекстноеМеню" id="74"/>
+					<ExtendedTooltip name="HeadersРасширеннаяПодсказка" id="75"/>
+				</LabelDecoration>
+				<Table name="HeadersTable" id="42">
+					<Representation>List</Representation>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<DataPath>HeadersTable</DataPath>
+					<CommandSet>
+						<ExcludedCommand>MoveDown</ExcludedCommand>
+						<ExcludedCommand>MoveUp</ExcludedCommand>
+					</CommandSet>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="HeadersTableКонтекстноеМеню" id="43"/>
+					<AutoCommandBar name="HeadersTableКоманднаяПанель" id="44">
+						<ChildItems>
+							<Button name="Add" id="61">
+								<Type>CommandBarButton</Type>
+								<Representation>Picture</Representation>
+								<CommandName>Form.Item.HeadersTable.StandardCommand.Add</CommandName>
+								<LocationInCommandBar>InCommandBar</LocationInCommandBar>
+								<ExtendedTooltip name="AddРасширеннаяПодсказка" id="62"/>
+							</Button>
+							<Button name="Copy" id="63">
+								<Type>CommandBarButton</Type>
+								<Representation>Picture</Representation>
+								<CommandName>Form.Item.HeadersTable.StandardCommand.Copy</CommandName>
+								<LocationInCommandBar>InCommandBar</LocationInCommandBar>
+								<ExtendedTooltip name="CopyРасширеннаяПодсказка" id="64"/>
+							</Button>
+							<Button name="Change" id="65">
+								<Type>CommandBarButton</Type>
+								<Representation>Picture</Representation>
+								<CommandName>Form.Item.HeadersTable.StandardCommand.Change</CommandName>
+								<LocationInCommandBar>InCommandBar</LocationInCommandBar>
+								<ExtendedTooltip name="ChangeРасширеннаяПодсказка" id="66"/>
+							</Button>
+							<Button name="Delete" id="67">
+								<Type>CommandBarButton</Type>
+								<Representation>Picture</Representation>
+								<CommandName>Form.Item.HeadersTable.StandardCommand.Delete</CommandName>
+								<LocationInCommandBar>InCommandBar</LocationInCommandBar>
+								<ExtendedTooltip name="DeleteРасширеннаяПодсказка" id="68"/>
+							</Button>
+							<Button name="Edit" id="69">
+								<Type>CommandBarButton</Type>
+								<Representation>Picture</Representation>
+								<CommandName>Form.Item.HeadersTable.StandardCommand.EndEdit</CommandName>
+								<LocationInCommandBar>InCommandBar</LocationInCommandBar>
+								<ExtendedTooltip name="EditРасширеннаяПодсказка" id="70"/>
+							</Button>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="HeadersTableРасширеннаяПодсказка" id="45"/>
+					<SearchStringAddition name="HeadersTableСтрокаПоиска" id="46">
+						<AdditionSource>
+							<Item>HeadersTable</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="HeadersTableСтрокаПоискаКонтекстноеМеню" id="47"/>
+						<ExtendedTooltip name="HeadersTableСтрокаПоискаРасширеннаяПодсказка" id="48"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="HeadersTableСостояниеПросмотра" id="49">
+						<AdditionSource>
+							<Item>HeadersTable</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="HeadersTableСостояниеПросмотраКонтекстноеМеню" id="50"/>
+						<ExtendedTooltip name="HeadersTableСостояниеПросмотраРасширеннаяПодсказка" id="51"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="HeadersTableУправлениеПоиском" id="52">
+						<AdditionSource>
+							<Item>HeadersTable</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="HeadersTableУправлениеПоискомКонтекстноеМеню" id="53"/>
+						<ExtendedTooltip name="HeadersTableУправлениеПоискомРасширеннаяПодсказка" id="54"/>
+					</SearchControlAddition>
+					<ChildItems>
+						<InputField name="HeaderKey" id="55">
+							<DataPath>HeadersTable.HeaderKey</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+							<ContextMenu name="HeaderKeyКонтекстноеМеню" id="56"/>
+							<ExtendedTooltip name="HeaderKeyРасширеннаяПодсказка" id="57"/>
+						</InputField>
+						<InputField name="HeaderValue" id="58">
+							<DataPath>HeadersTable.HeaderValue</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+							<ContextMenu name="HeaderValueКонтекстноеМеню" id="59"/>
+							<ExtendedTooltip name="HeaderValueРасширеннаяПодсказка" id="60"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="MetadataName" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Метаданные</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ClientKey" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ключ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Predefined" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Предопределенный</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="AutoConnect" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Auto connect</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="IBUserName" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя пользователя информационной базы</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ServerURL" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>URL сервера</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="User" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пользователь</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Password" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пароль</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="UseOSAuthentication" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать аутентификацию ОС </v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Timeout" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таймаут</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>6</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="UseOSProxy" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать прокси ОС</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="HedersText" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текст заголовков</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="HeadersTable" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица заголовков</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<Columns>
+				<Column name="HeaderKey" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="HeaderValue" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Значение</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="WriteAndClose" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Write and close</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>WriteAndClose</Action>
+		</Command>
+		<Command name="Cancel" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отмена</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Cancel</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Cancel</Action>
+		</Command>
+		<Command name="Write" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Write</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Ctrl+S</Shortcut>
+			<Action>Write</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="WebSocketClientName">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ConnectionKey">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="PredefinedConnection">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="AutoConnect">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="InfoBaseUserName">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ServerURL">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="MetadataName">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

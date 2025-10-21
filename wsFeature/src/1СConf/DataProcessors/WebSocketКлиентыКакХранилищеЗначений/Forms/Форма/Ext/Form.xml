@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="ИмяВебсокета" id="1">
+			<DataPath>ИмяВебсокета</DataPath>
+			<Wrap>false</Wrap>
+			<ListChoiceMode>true</ListChoiceMode>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="ИмяВебсокетаКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="ИмяВебсокетаРасширеннаяПодсказка" id="3"/>
+		</InputField>
+		<InputField name="КлючВебсокета" id="4">
+			<DataPath>КлючВебсокета</DataPath>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="КлючВебсокетаКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="КлючВебсокетаРасширеннаяПодсказка" id="6"/>
+		</InputField>
+		<Button name="СоздатьХранилищеЗначений" id="7">
+			<Type>UsualButton</Type>
+			<CommandName>Form.Command.СоздатьХранилищеЗначений</CommandName>
+			<ExtendedTooltip name="СоздатьХранилищеЗначенийРасширеннаяПодсказка" id="8"/>
+		</Button>
+		<Table name="Список" id="9">
+			<Representation>List</Representation>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>Список</DataPath>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="СписокКонтекстноеМеню" id="10"/>
+			<AutoCommandBar name="СписокКоманднаяПанель" id="11">
+				<ChildItems>
+					<Button name="ЗаписатьЗначения" id="28">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ЗаписатьЗначения</CommandName>
+						<ExtendedTooltip name="ЗаписатьЗначенияРасширеннаяПодсказка" id="29"/>
+					</Button>
+					<Button name="СписокПрочитатьДанные" id="30">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ПрочитатьДанные</CommandName>
+						<ExtendedTooltip name="СписокПрочитатьДанныеРасширеннаяПодсказка" id="31"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="12"/>
+			<SearchStringAddition name="СписокСтрокаПоиска" id="13">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="14"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="15"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="16">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="17"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="18"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="СписокУправлениеПоиском" id="19">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="20"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="21"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<InputField name="СписокКлюч" id="22">
+					<DataPath>Список.Ключ</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="СписокКлючКонтекстноеМеню" id="23"/>
+					<ExtendedTooltip name="СписокКлючРасширеннаяПодсказка" id="24"/>
+				</InputField>
+				<InputField name="СписокЗначение" id="25">
+					<DataPath>Список.Значение</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="СписокЗначениеКонтекстноеМеню" id="26"/>
+					<ExtendedTooltip name="СписокЗначениеРасширеннаяПодсказка" id="27"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<UsualGroup name="Группа1" id="35">
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="36"/>
+			<ChildItems>
+				<InputField name="КлючХранилища" id="32">
+					<DataPath>КлючХранилища</DataPath>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="КлючХранилищаКонтекстноеМеню" id="33"/>
+					<ExtendedTooltip name="КлючХранилищаРасширеннаяПодсказка" id="34"/>
+				</InputField>
+				<Button name="ЗаписатьСтруктуруВХЗ" id="37">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ЗаписатьСтруктуруВХЗ</CommandName>
+					<ExtendedTooltip name="ЗаписатьСтруктуруВХЗРасширеннаяПодсказка" id="38"/>
+				</Button>
+				<Button name="ПрочитатьДанныеХЗ" id="39">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ПрочитатьДанныеХЗ</CommandName>
+					<ExtendedTooltip name="ПрочитатьДанныеХЗРасширеннаяПодсказка" id="40"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.WebSocketКлиентыКакХранилищеЗначений</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="ИмяВебсокета" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя вебсокета</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="КлючВебсокета" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ключ вебсокета</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Список" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Ключ" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ключ</v8:content>
+						</v8:item>
+					</Title>
+					<Type/>
+				</Column>
+				<Column name="Значение" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Значение</v8:content>
+						</v8:item>
+					</Title>
+					<Type/>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="КлючХранилища" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ключ хранилища</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="СоздатьХранилищеЗначений" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать хранилище значений</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать хранилище значений</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СоздатьХранилищеЗначений</Action>
+		</Command>
+		<Command name="ЗаписатьЗначения" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать значения</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать значения</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаписатьЗначения</Action>
+		</Command>
+		<Command name="ПрочитатьДанные" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прочитать данные</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прочитать данные</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПрочитатьДанные</Action>
+		</Command>
+		<Command name="ЗаписатьСтруктуруВХЗ" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать структуру в ХЗ</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать структуру ВХЗ</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаписатьСтруктуруВХЗ</Action>
+		</Command>
+		<Command name="ПрочитатьДанныеХЗ" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прочитать данные ХЗ</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прочитать данные ХЗ</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПрочитатьДанныеХЗ</Action>
+		</Command>
+	</Commands>
+</Form>
