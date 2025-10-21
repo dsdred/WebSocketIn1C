@@ -1,6 +1,6 @@
 # WebSocket в 1C
 
-Материалы для повторения действий из статей про WebSockets
+Материалы для повторения действий из статей про WebSocket'ы
 
 ![Infostart](https://raw.githubusercontent.com/dsdred/PAPI-tools/2febc0e31c3ef04eb9277150f1488b9f1b26164f/assets/img/svg/infostartlogo.svg)
 
