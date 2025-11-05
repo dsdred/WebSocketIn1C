@@ -1,5 +1,7 @@
 # WebSocket в 1C
 
+[![OpenYellow](https://img.shields.io/endpoint?url=https://openyellow.org/data/badges/6/916237291.json)](https://openyellow.org/grid?data=top&repo=916237291)
+
 Материалы для повторения действий из статей про WebSocket'ы
 
 ![Infostart](https://raw.githubusercontent.com/dsdred/PAPI-tools/2febc0e31c3ef04eb9277150f1488b9f1b26164f/assets/img/svg/infostartlogo.svg)
