@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ConfigDumpInfo xmlns="http://v8.1c.ru/8.3/xcf/dumpinfo" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" format="Hierarchical" version="2.20">
+	<ConfigVersions>
+		<Metadata name="Configuration.WS" id="37f53e8e-3768-4466-b28a-b050b8891255" configVersion="31248855d6b5dd0d96a7ec0c98528986dca358ae"/>
+		<Metadata name="Language.Русский" id="a5e47774-7386-43d8-b80c-33ca9b4ea3ab" configVersion="83202d8cdf126efbe990d1bfcb3c019ef320d8b4"/>
+		<Metadata name="Role.WS_ОсновнаяРоль" id="8a36f0f7-0f89-4216-b51a-70ee3284f632" configVersion="03822d9960ecd964ce203cee2c0d176bb0473343"/>
+		<Metadata name="WebSocketClient.WS_КлиентРасширение" id="0afbc0ca-f8e0-4ad3-bbec-d2f0373c7f0a" configVersion="392971aceddec5d66ded56401373211480aab306"/>
+		<Metadata name="WebSocketClient.WS_КлиентРасширение.Module" id="0afbc0ca-f8e0-4ad3-bbec-d2f0373c7f0a.0" configVersion="eb59f457c836c41899dac66544912f57736a2cda"/>
+		<Metadata name="WebSocketClient.WS_Хранилище" id="e47d4a4e-7d88-4d84-bf45-6f6f47e421b8" configVersion="772994c04c313cc0460fdcb560006de1184cb373"/>
+	</ConfigVersions>
+</ConfigDumpInfo>

@@ -43,6 +43,14 @@
 
 ---
 
+[Поинтегрируем: WebSocket’ы в платформе 1С. Часть 3](https://infostart.ru/1c/articles/2523862/)
+
+- *WebSocket server* - wsPart3\src\wsServer
+- *Конфигурация 1С* - wsPart3\src\1СConf
+    - Обработка "PAPI_WebSocketСоединения" - оработка "WebSocket-Соединения" для платфрормы 8.3.27
+- *Расшиерение 1С* - wsPart3\src\1СExt
+
+---
 
 **Команды**
 

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ConfigDumpInfo xmlns="http://v8.1c.ru/8.3/xcf/dumpinfo" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" format="Hierarchical" version="2.20">
+	<ConfigVersions>
+		<Metadata name="Catalog.Товар" id="85cc8d35-bfa8-408e-804e-2d96bce5c77a" configVersion="851c922e5163cb4085c950c3b14488b200000000"/>
+		<Metadata name="CommonModule.WebsocketКлиент" id="992ab835-1564-4839-89a8-3f3c2c97af26" configVersion="fc6f1d9f0c3c754696813f8cf2c86e5600000000"/>
+		<Metadata name="CommonModule.WebsocketКлиент.Module" id="992ab835-1564-4839-89a8-3f3c2c97af26.0" configVersion="043fd410be0a784fb44ff064cdbfec7c00000000"/>
+		<Metadata name="CommonModule.WebsocketСервер" id="1eb09137-e5c0-4500-a10b-998e6e41043a" configVersion="2676b3806a4b394089dd3002a5f4a7fb00000000"/>
+		<Metadata name="CommonModule.WebsocketСервер.Module" id="1eb09137-e5c0-4500-a10b-998e6e41043a.0" configVersion="13f71515209ce8468706f6aa5f8e1d9800000000"/>
+		<Metadata name="Configuration.Конфигурация" id="9acabeca-bced-4c4e-8f09-285ce977d32a" configVersion="888b1bde56ee4b4caf223dbaf5fb0dfa00000000"/>
+		<Metadata name="DataProcessor.PAPI_WebSocketСоединения" id="ec54c5ee-1859-433c-90ec-79187f26c0b9" configVersion="013c166599e77a46b9cf2d9acea030b500000000"/>
+		<Metadata name="DataProcessor.PAPI_WebSocketСоединения.Form.Форма" id="376b7797-aa67-4dbb-901d-21eaf6458d0c" configVersion="a3d1136177cccb48b875559aac90a56400000000"/>
+		<Metadata name="DataProcessor.PAPI_WebSocketСоединения.Form.Форма.Form" id="376b7797-aa67-4dbb-901d-21eaf6458d0c.0" configVersion="35502f22ffd7ac4790373bd4cc6e4a4900000000"/>
+		<Metadata name="DataProcessor.PAPI_WebSocketСоединения.ObjectModule" id="ec54c5ee-1859-433c-90ec-79187f26c0b9.0" configVersion="f684c3da78bde04e9c55c84feb1204b600000000"/>
+		<Metadata name="DataProcessor.StandardWebSocketClients" id="b392578f-fb9e-4580-9f83-409615d8a82b" configVersion="fb43d7dc95658a43ba68448d579c4d8200000000"/>
+		<Metadata name="DataProcessor.StandardWebSocketClients.Form.WebSocketClient" id="a07bd659-c673-4314-ade3-d7b68c8cdd21" configVersion="d89445704ae3aa4c87116d75f846486900000000"/>
+		<Metadata name="DataProcessor.StandardWebSocketClients.Form.WebSocketClient.Form" id="a07bd659-c673-4314-ade3-d7b68c8cdd21.0" configVersion="1ef20cd92fba114e9791e957b57bb1a100000000"/>
+		<Metadata name="DataProcessor.StandardWebSocketClients.Form.WebSocketClient.Help" id="a07bd659-c673-4314-ade3-d7b68c8cdd21.1" configVersion="84b00f13f385ad4f874850278e797e1000000000"/>
+		<Metadata name="DataProcessor.StandardWebSocketClients.Form.WebSocketClients" id="3af39e54-8460-4b8e-b334-d0cf74db8b2c" configVersion="30d5b6e8d05efe48a876fd02a761eb3500000000"/>
+		<Metadata name="DataProcessor.StandardWebSocketClients.Form.WebSocketClients.Form" id="3af39e54-8460-4b8e-b334-d0cf74db8b2c.0" configVersion="1cbc0c6570630e4c9195c3fc723702e300000000"/>
+		<Metadata name="DataProcessor.StandardWebSocketClients.Form.WebSocketClients.Help" id="3af39e54-8460-4b8e-b334-d0cf74db8b2c.1" configVersion="386039de77e0ef46851a290780b83bd900000000"/>
+		<Metadata name="DataProcessor.StandardWebSocketClients.Help" id="b392578f-fb9e-4580-9f83-409615d8a82b.1" configVersion="4b05ac5a07b53e4aa282e11ed83a44e600000000"/>
+		<Metadata name="DataProcessor.WebSocketКлиентыКакХранилищеЗначений" id="e764cba2-a7b1-4b51-a124-e9404c69f041" configVersion="7c59777ebdcef841a103b043964edd8600000000"/>
+		<Metadata name="DataProcessor.WebSocketКлиентыКакХранилищеЗначений.Form.Форма" id="c41076c3-54fd-41e6-9454-35688d56d7e4" configVersion="c38e04c69cfcfd4d8edf5eaccdfac81f00000000"/>
+		<Metadata name="DataProcessor.WebSocketКлиентыКакХранилищеЗначений.Form.Форма.Form" id="c41076c3-54fd-41e6-9454-35688d56d7e4.0" configVersion="259d1556443b884e86a5dd1fbfacd87e00000000"/>
+		<Metadata name="DataProcessor.wsАвторизация" id="a75c9356-f8c3-415f-b1bf-d1402143ec04" configVersion="60ce8c9489438748b489b371defb57d700000000"/>
+		<Metadata name="DataProcessor.wsАвторизация.Form.Форма" id="719ee8ac-8cee-4f3b-b015-1a650db83a94" configVersion="aa5732a61abbfc418f68ffb5470e58c500000000"/>
+		<Metadata name="DataProcessor.wsАвторизация.Form.Форма.Form" id="719ee8ac-8cee-4f3b-b015-1a650db83a94.0" configVersion="dbf1d3b7aaca4648ac2e9b5001910a3d00000000"/>
+		<Metadata name="DataProcessor.wsДинамический" id="3a8d7eb5-6a30-43f8-abb6-b0107d33ddfd" configVersion="fed82623533b9b47b4423abc2bd99f6600000000"/>
+		<Metadata name="DataProcessor.wsДинамический.Form.Форма" id="c0de5d2d-cbcb-4bf4-8795-c3c8c0410194" configVersion="eb07fcda39f6444392d5ddd6b6ae982100000000"/>
+		<Metadata name="DataProcessor.wsДинамический.Form.Форма.Form" id="c0de5d2d-cbcb-4bf4-8795-c3c8c0410194.0" configVersion="daa68ac8fca17448b9dfe7415ae4d41b00000000"/>
+		<Metadata name="DataProcessor.СоединенияВебсокетов" id="7d453082-1852-4e33-9335-96be9ce85fe6" configVersion="b371134272e89c4d94bceb141cff3b7100000000"/>
+		<Metadata name="DataProcessor.СоединенияВебсокетов.Form.Форма" id="84d2ae71-0361-4273-a285-363cc77335b9" configVersion="651ed053532eba479aa03f91fe2c588e00000000"/>
+		<Metadata name="DataProcessor.СоединенияВебсокетов.Form.Форма.Form" id="84d2ae71-0361-4273-a285-363cc77335b9.0" configVersion="0de45c92cf6cb948a6d8102777197a0c00000000"/>
+		<Metadata name="Language.Русский" id="221f38c6-f35b-4ae6-b510-2b633549ad2e" configVersion="4e43eb07e39aa24b82faaadd8d57886400000000"/>
+		<Metadata name="WebSocketClient.КлиентКонфигураторПредопределенный" id="69b5760c-5de1-4e44-8f52-1778ecc7ba5c" configVersion="94fe10170a2dd54e9594ce2d9013e77000000000"/>
+		<Metadata name="WebSocketClient.КлиентКонфигураторПредопределенный.Module" id="69b5760c-5de1-4e44-8f52-1778ecc7ba5c.0" configVersion="d84f1e190814fb408a3b474a57dff5e900000000"/>
+	</ConfigVersions>
+</ConfigDumpInfo>
