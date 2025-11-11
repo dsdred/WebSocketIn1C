@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<ChildItems>
+		<UsualGroup name="Группа1" id="16">
+			<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="17"/>
+			<ChildItems>
+				<InputField name="КлючКлиента" id="3">
+					<DataPath>КлючКлиента</DataPath>
+					<HorizontalStretch>true</HorizontalStretch>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="КлючКлиентаКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="КлючКлиентаРасширеннаяПодсказка" id="5"/>
+				</InputField>
+				<CheckBoxField name="Удалять" id="18">
+					<DataPath>Удалять</DataPath>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="УдалятьКонтекстноеМеню" id="19"/>
+					<ExtendedTooltip name="УдалятьРасширеннаяПодсказка" id="20"/>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+		<Button name="ЛогинПарольРасширение" id="1">
+			<Type>UsualButton</Type>
+			<CommandName>Form.Command.ЛогинПарольРасширение</CommandName>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Авторизоваться</v8:content>
+				</v8:item>
+			</Title>
+			<ExtendedTooltip name="ЛогинПарольРасширениеРасширеннаяПодсказка" id="2"/>
+		</Button>
+		<InputField name="Сообщение" id="6">
+			<DataPath>Сообщение</DataPath>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="СообщениеКонтекстноеМеню" id="7"/>
+			<ExtendedTooltip name="СообщениеРасширеннаяПодсказка" id="8"/>
+		</InputField>
+		<Button name="Отправить" id="9">
+			<Type>UsualButton</Type>
+			<CommandName>Form.Command.Отправить</CommandName>
+			<ExtendedTooltip name="ОтправитьРасширеннаяПодсказка" id="10"/>
+		</Button>
+		<Button name="ОтправитьДД" id="11">
+			<Type>UsualButton</Type>
+			<CommandName>Form.Command.ОтправитьДД</CommandName>
+			<ExtendedTooltip name="ОтправитьДДРасширеннаяПодсказка" id="12"/>
+		</Button>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.wsАвторизация</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="КлючКлиента" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ключ клиента</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Сообщение" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сообщение</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Удалять" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалять</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ЛогинПарольРасширение" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Логин пароль расширение</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Логин пароль расширение</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЛогинПарольРасширение</Action>
+		</Command>
+		<Command name="Отправить" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отправить текст</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отправить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Отправить</Action>
+		</Command>
+		<Command name="ОтправитьДД" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отправить двоичные данные</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отправить ДД</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОтправитьДД</Action>
+		</Command>
+	</Commands>
+</Form>
