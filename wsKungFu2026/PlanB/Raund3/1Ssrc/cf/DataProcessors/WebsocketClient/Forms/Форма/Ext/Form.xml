@@ -1,0 +1,563 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="Корень" id="1">
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="КореньРасширеннаяПодсказка" id="2"/>
+			<ChildItems>
+				<LabelField name="ЗаголовокФормы" id="3">
+					<DataPath>ЗаголовокФормы</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<ContextMenu name="ЗаголовокФормыКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="ЗаголовокФормыРасширеннаяПодсказка" id="5"/>
+				</LabelField>
+				<LabelField name="ПодзаголовокФормы" id="6">
+					<DataPath>ПодзаголовокФормы</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<TextColor>#6F6254</TextColor>
+					<ContextMenu name="ПодзаголовокФормыКонтекстноеМеню" id="7"/>
+					<ExtendedTooltip name="ПодзаголовокФормыРасширеннаяПодсказка" id="8"/>
+				</LabelField>
+				<UsualGroup name="ВерхниеКарточки" id="9">
+					<Group>AlwaysHorizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ВерхниеКарточкиРасширеннаяПодсказка" id="10"/>
+					<ChildItems>
+						<UsualGroup name="КарточкаПодключение" id="11">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Подключение</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Vertical</Group>
+							<ExtendedTooltip name="КарточкаПодключениеРасширеннаяПодсказка" id="12"/>
+							<ChildItems>
+								<InputField name="WSSАдрес" id="13">
+									<DataPath>WSSАдрес</DataPath>
+									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+									<ContextMenu name="WSSАдресКонтекстноеМеню" id="14"/>
+									<ExtendedTooltip name="WSSАдресРасширеннаяПодсказка" id="15"/>
+								</InputField>
+								<Button name="Подключиться" id="16">
+									<Type>UsualButton</Type>
+									<CommandName>Form.Command.Подключиться</CommandName>
+									<ExtendedTooltip name="ПодключитьсяРасширеннаяПодсказка" id="17"/>
+								</Button>
+								<Button name="Отключиться" id="18">
+									<Type>UsualButton</Type>
+									<Visible>false</Visible>
+									<CommandName>Form.Command.Отключиться</CommandName>
+									<ExtendedTooltip name="ОтключитьсяРасширеннаяПодсказка" id="19"/>
+								</Button>
+								<LabelField name="СтатусСоединения" id="20">
+									<DataPath>СтатусСоединения</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Статус</v8:content>
+										</v8:item>
+									</Title>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<ContextMenu name="СтатусСоединенияКонтекстноеМеню" id="21"/>
+									<ExtendedTooltip name="СтатусСоединенияРасширеннаяПодсказка" id="22"/>
+								</LabelField>
+								<LabelField name="ИдентификаторКлиента" id="23">
+									<DataPath>ИдентификаторКлиента</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Ваш clientId</v8:content>
+										</v8:item>
+									</Title>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<ContextMenu name="ИдентификаторКлиентаКонтекстноеМеню" id="24"/>
+									<ExtendedTooltip name="ИдентификаторКлиентаРасширеннаяПодсказка" id="25"/>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="КарточкаОтправка" id="26">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Отправка сообщения</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Vertical</Group>
+							<ExtendedTooltip name="КарточкаОтправкаРасширеннаяПодсказка" id="27"/>
+							<ChildItems>
+								<InputField name="ПолучательСообщения" id="28">
+									<DataPath>ПолучательСообщения</DataPath>
+									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+									<ContextMenu name="ПолучательСообщенияКонтекстноеМеню" id="29"/>
+									<ExtendedTooltip name="ПолучательСообщенияРасширеннаяПодсказка" id="30"/>
+								</InputField>
+								<LabelField name="ПодсказкаПолучателя" id="31">
+									<DataPath>ПодсказкаПолучателя</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<TextColor>#6F6254</TextColor>
+									<ContextMenu name="ПодсказкаПолучателяКонтекстноеМеню" id="32"/>
+									<ExtendedTooltip name="ПодсказкаПолучателяРасширеннаяПодсказка" id="33"/>
+								</LabelField>
+								<InputField name="ТекстСообщения" id="34">
+									<DataPath>ТекстСообщения</DataPath>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<AutoMaxHeight>false</AutoMaxHeight>
+									<HorizontalStretch>true</HorizontalStretch>
+									<VerticalStretch>true</VerticalStretch>
+									<MultiLine>true</MultiLine>
+									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+									<ContextMenu name="ТекстСообщенияКонтекстноеМеню" id="35"/>
+									<ExtendedTooltip name="ТекстСообщенияРасширеннаяПодсказка" id="36"/>
+								</InputField>
+								<Button name="ОтправитьСообщение" id="37">
+									<Type>UsualButton</Type>
+									<CommandName>Form.Command.ОтправитьСообщение</CommandName>
+									<ExtendedTooltip name="ОтправитьСообщениеРасширеннаяПодсказка" id="38"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="КарточкаКлиенты" id="39">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Подключенные клиенты</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Vertical</Group>
+							<ExtendedTooltip name="КарточкаКлиентыРасширеннаяПодсказка" id="40"/>
+							<ChildItems>
+								<Table name="Клиенты" id="41">
+									<Representation>List</Representation>
+									<ChangeRowSet>false</ChangeRowSet>
+									<ChangeRowOrder>false</ChangeRowOrder>
+									<DataPath>Клиенты</DataPath>
+									<RowFilter xsi:nil="true"/>
+									<ContextMenu name="КлиентыКонтекстноеМеню" id="42">
+										<Autofill>false</Autofill>
+									</ContextMenu>
+									<AutoCommandBar name="КлиентыКоманднаяПанель" id="43">
+										<Autofill>false</Autofill>
+									</AutoCommandBar>
+									<ExtendedTooltip name="КлиентыРасширеннаяПодсказка" id="44"/>
+									<SearchStringAddition name="КлиентыСтрокаПоиска" id="63">
+										<AdditionSource>
+											<Item>Клиенты</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="КлиентыСтрокаПоискаКонтекстноеМеню" id="64"/>
+										<ExtendedTooltip name="КлиентыСтрокаПоискаРасширеннаяПодсказка" id="65"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="КлиентыСостояниеПросмотра" id="66">
+										<AdditionSource>
+											<Item>Клиенты</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="КлиентыСостояниеПросмотраКонтекстноеМеню" id="67"/>
+										<ExtendedTooltip name="КлиентыСостояниеПросмотраРасширеннаяПодсказка" id="68"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="КлиентыУправлениеПоиском" id="69">
+										<AdditionSource>
+											<Item>Клиенты</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="КлиентыУправлениеПоискомКонтекстноеМеню" id="70"/>
+										<ExtendedTooltip name="КлиентыУправлениеПоискомРасширеннаяПодсказка" id="71"/>
+									</SearchControlAddition>
+									<ChildItems>
+										<InputField name="КлиентыПредставление" id="45">
+											<DataPath>Клиенты.Представление</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<EditMode>EnterOnInput</EditMode>
+											<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+											<ContextMenu name="КлиентыПредставлениеКонтекстноеМеню" id="46"/>
+											<ExtendedTooltip name="КлиентыПредставлениеРасширеннаяПодсказка" id="47"/>
+										</InputField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="КарточкаЖурнал" id="48">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Журнал сообщений</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>true</HorizontalStretch>
+					<VerticalStretch>true</VerticalStretch>
+					<Group>Vertical</Group>
+					<ExtendedTooltip name="КарточкаЖурналРасширеннаяПодсказка" id="49"/>
+					<ChildItems>
+						<Table name="ЖурналСообщений" id="50">
+							<Representation>List</Representation>
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<DataPath>ЖурналСообщений</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ЖурналСообщенийКонтекстноеМеню" id="51">
+								<Autofill>false</Autofill>
+							</ContextMenu>
+							<AutoCommandBar name="ЖурналСообщенийКоманднаяПанель" id="52">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ЖурналСообщенийРасширеннаяПодсказка" id="53"/>
+							<SearchStringAddition name="ЖурналСообщенийСтрокаПоиска" id="72">
+								<AdditionSource>
+									<Item>ЖурналСообщений</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ЖурналСообщенийСтрокаПоискаКонтекстноеМеню" id="73"/>
+								<ExtendedTooltip name="ЖурналСообщенийСтрокаПоискаРасширеннаяПодсказка" id="74"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ЖурналСообщенийСостояниеПросмотра" id="75">
+								<AdditionSource>
+									<Item>ЖурналСообщений</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ЖурналСообщенийСостояниеПросмотраКонтекстноеМеню" id="76"/>
+								<ExtendedTooltip name="ЖурналСообщенийСостояниеПросмотраРасширеннаяПодсказка" id="77"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ЖурналСообщенийУправлениеПоиском" id="78">
+								<AdditionSource>
+									<Item>ЖурналСообщений</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ЖурналСообщенийУправлениеПоискомКонтекстноеМеню" id="79"/>
+								<ExtendedTooltip name="ЖурналСообщенийУправлениеПоискомРасширеннаяПодсказка" id="80"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<InputField name="ЖурналСообщенийВремя" id="54">
+									<DataPath>ЖурналСообщений.Время</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+									<ContextMenu name="ЖурналСообщенийВремяКонтекстноеМеню" id="55"/>
+									<ExtendedTooltip name="ЖурналСообщенийВремяРасширеннаяПодсказка" id="56"/>
+								</InputField>
+								<InputField name="ЖурналСообщенийЗаголовок" id="57">
+									<DataPath>ЖурналСообщений.Заголовок</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+									<ContextMenu name="ЖурналСообщенийЗаголовокКонтекстноеМеню" id="58"/>
+									<ExtendedTooltip name="ЖурналСообщенийЗаголовокРасширеннаяПодсказка" id="59"/>
+								</InputField>
+								<InputField name="ЖурналСообщенийТекст" id="60">
+									<DataPath>ЖурналСообщений.Текст</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+									<ContextMenu name="ЖурналСообщенийТекстКонтекстноеМеню" id="61"/>
+									<ExtendedTooltip name="ЖурналСообщенийТекстРасширеннаяПодсказка" id="62"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.WebsocketClient</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="ЗаголовокФормы" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заголовок</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПодзаголовокФормы" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подзаголовок</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПодсказкаПолучателя" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подсказка</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="WSSАдрес" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес WebSocket-сервера</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СтатусСоединения" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статус</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИдентификаторКлиента" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ваш clientId</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПолучательСообщения" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Получатель</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ТекстСообщения" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сообщение</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Подключено" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подключено</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КлючСоединения" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ключ соединения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Клиенты" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Клиенты</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Идентификатор" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Идентификатор</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Представление" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подключенные клиенты</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ЖурналСообщений" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Журнал сообщений</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Время" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Время</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Заголовок" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Заголовок</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Текст" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сообщение</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Подключиться" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подключиться</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Подключиться</Action>
+		</Command>
+		<Command name="Отключиться" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отключиться</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Отключиться</Action>
+		</Command>
+		<Command name="ОтправитьСообщение" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отправить</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ОтправитьСообщение</Action>
+		</Command>
+	</Commands>
+</Form>

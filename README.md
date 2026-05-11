@@ -55,6 +55,48 @@
 - *Конфигурация 1С* - wsPart3\src\1СConf8_3_27_1786
 
 ---
+[Кунг-фу Конфа 2026 Екатеринбург](https://kungfu-conf.ru/ekb2026)
+
+**Для платформы 8.3.27.2130**
+- *Папки для заполнения проектов промптами* - wsKungFu2026\PlanA\
+- *Промпты:* 
+    - wsKungFu2026\prompt1.md
+    - wsKungFu2026\prompt2.md
+    - wsKungFu2026\prompt3.md
+    - wsKungFu2026\promptGame.md
+
+- *Папки с готовыми проектами* - wsKungFu2026\PlanB\
+  - Проект Raund1. Демонстрирует работу с подключениями и сеансами.
+    - *Конфигурация 1С* - \1Ssrc
+    - *Коллекция для bruno* - \bruno
+    - *WebSocket client на HTML\JS* - index.html
+    - *WebSocket server* - server.js
+    - *Документация* - README.md
+
+  - Проект Raund2. Демонстрирует работу с wss.
+    - *Конфигурация 1С* - \1Ssrc
+    - *Коллекция для bruno* - \bruno
+    - *WebSocket client на HTML\JS* - index.html
+    - *WebSocket server* - server.js
+    - *Скрипт генерации сертификатов* - generate-cert.ps1
+    - *Документация* - README.md
+
+  - Проект Raund3. Демонстрирует работу с чата.
+    - *Конфигурация 1С* - \1Ssrc
+    - *Коллекция для bruno* - \bruno
+    - *WebSocket client на HTML\JS* - public\index.html
+    - *WebSocket server* - server.js
+    - *Документация* - README.md  
+
+  - Проект game. Демонстрирует работу с чата.
+    - *Конфигурация 1С* - \1Ssrc
+    - *Коллекция для bruno* - \bruno
+    - *WebSocket client на HTML\JS* - public\index.html
+    - *WebSocket server* - server.js
+    - *Настройка параметров в игре* - config.json
+    - *Документация* - README.md 
+
+---
 
 **Команды**
 

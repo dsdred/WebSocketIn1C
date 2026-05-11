@@ -1,0 +1,23 @@
+meta {
+  name: ws-send-to-client
+  type: ws
+  seq: 4
+}
+
+ws {
+  url: ws://localhost:8080
+  body: ws
+  auth: none
+}
+
+body:ws {
+  name: message 1
+  type: json
+  content: '''
+    {
+      "type": "private",
+      "to": "client-1",
+      "message": "Private hello from Bruno"
+    }
+  '''
+}

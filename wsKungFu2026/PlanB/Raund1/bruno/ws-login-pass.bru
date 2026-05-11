@@ -1,0 +1,21 @@
+meta {
+  name: ws-login-pass
+  type: ws
+  seq: 1
+}
+
+ws {
+  url: ws://localhost:8080
+}
+
+headers {
+  x-login: admin
+  x-password: 123
+}
+
+body:ws {
+  name: message 1
+  content: '''
+Hello from Bruno
+'''
+}

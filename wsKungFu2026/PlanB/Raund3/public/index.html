@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebSocket Client</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe6;
+      --panel: rgba(255, 252, 247, 0.92);
+      --border: #d2c3ac;
+      --text: #2f2418;
+      --muted: #6d5c49;
+      --accent: #ba6c25;
+      --accent-strong: #8f4d14;
+      --success: #2f7d4f;
+      --danger: #a7392d;
+      --shadow: 0 20px 50px rgba(77, 52, 28, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(233, 190, 120, 0.45), transparent 28%),
+        radial-gradient(circle at top right, rgba(164, 200, 157, 0.35), transparent 24%),
+        linear-gradient(160deg, #f8f1e7 0%, #efe5d7 45%, #e6dccf 100%);
+      padding: 24px;
+    }
+
+    .app {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      gap: 20px;
+    }
+
+    .hero,
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero {
+      padding: 28px;
+    }
+
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.05;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 20px;
+    }
+
+    .panel {
+      padding: 20px;
+    }
+
+    .panel h2 {
+      margin: 0 0 16px;
+      font-size: 1.05rem;
+    }
+
+    .stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    .status-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.65);
+      border: 1px solid rgba(210, 195, 172, 0.7);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .badge::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: #8f8f8f;
+      box-shadow: 0 0 0 5px rgba(143, 143, 143, 0.12);
+    }
+
+    .badge[data-state="connecting"]::before {
+      background: var(--accent);
+      box-shadow: 0 0 0 5px rgba(186, 108, 37, 0.15);
+    }
+
+    .badge[data-state="connected"]::before {
+      background: var(--success);
+      box-shadow: 0 0 0 5px rgba(47, 125, 79, 0.16);
+    }
+
+    .badge[data-state="error"]::before {
+      background: var(--danger);
+      box-shadow: 0 0 0 5px rgba(167, 57, 45, 0.16);
+    }
+
+    .button-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    button {
+      appearance: none;
+      border: 0;
+      border-radius: 14px;
+      padding: 12px 16px;
+      font: inherit;
+      cursor: pointer;
+      transition: transform 0.15s ease, opacity 0.15s ease, background 0.15s ease;
+    }
+
+    button:hover:not(:disabled) {
+      transform: translateY(-1px);
+    }
+
+    button:disabled {
+      cursor: not-allowed;
+      opacity: 0.45;
+    }
+
+    .primary {
+      background: var(--accent);
+      color: #fff9f2;
+    }
+
+    .primary:hover:not(:disabled) {
+      background: var(--accent-strong);
+    }
+
+    .secondary {
+      background: #e5d4bc;
+      color: var(--text);
+    }
+
+    .secondary:hover:not(:disabled) {
+      background: #dbc5a6;
+    }
+
+    .card {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(210, 195, 172, 0.65);
+    }
+
+    .label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      border: 1px solid #ccb99f;
+      border-radius: 14px;
+      padding: 12px 14px;
+      font: inherit;
+      color: var(--text);
+      background: #fffdf9;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.94rem;
+      word-break: break-word;
+    }
+
+    .clients {
+      margin: 0;
+      padding-left: 18px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .clients li {
+      color: var(--text);
+    }
+
+    .history {
+      display: grid;
+      gap: 12px;
+      max-height: 560px;
+      overflow: auto;
+      padding-right: 4px;
+    }
+
+    .entry {
+      border-radius: 18px;
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(210, 195, 172, 0.7);
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .entry-message {
+      margin: 0;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .entry.error {
+      border-color: rgba(167, 57, 45, 0.32);
+      background: rgba(255, 241, 239, 0.9);
+    }
+
+    .empty-state {
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    @media (max-width: 860px) {
+      body {
+        padding: 16px;
+      }
+
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .button-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <h1>WebSocket Client</h1>
+      <p>
+        Open this file directly from the <code>public</code> folder, connect to
+        your WebSocket server, watch the live client list, and send the same
+        JSON messages that the 1C client uses.
+      </p>
+    </section>
+
+    <section class="layout">
+      <aside class="stack">
+        <section class="panel">
+          <h2>Connection</h2>
+          <div class="stack">
+            <div class="status-row">
+              <span>Status</span>
+              <span id="statusBadge" class="badge" data-state="disconnected">disconnected</span>
+            </div>
+
+            <div class="button-row">
+              <button id="connectButton" class="primary" type="button">Connect</button>
+              <button id="disconnectButton" class="secondary" type="button" disabled>Disconnect</button>
+            </div>
+
+            <div class="card">
+              <label class="label" for="serverUrl">Server URL</label>
+              <input id="serverUrl" type="text" value="ws://localhost:8080">
+            </div>
+
+            <div class="card">
+              <div class="label">My clientId</div>
+              <div id="clientIdValue" class="meta">not assigned yet</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>Connected Clients</h2>
+          <ol id="clientsList" class="clients">
+            <li class="empty-state">No active clients yet.</li>
+          </ol>
+        </section>
+      </aside>
+
+      <section class="stack">
+        <section class="panel">
+          <h2>Send Message</h2>
+          <div class="stack">
+            <div>
+              <label class="label" for="broadcastMessage">Broadcast message</label>
+              <textarea id="broadcastMessage" placeholder="Hello everyone"></textarea>
+            </div>
+            <button id="sendBroadcastButton" class="primary" type="button" disabled>Send to all</button>
+
+            <div>
+              <label class="label" for="targetClient">Private message target</label>
+              <select id="targetClient" disabled>
+                <option value="">Select a client</option>
+              </select>
+            </div>
+            <div>
+              <label class="label" for="privateMessage">Private message</label>
+              <textarea id="privateMessage" placeholder="Hello client-2"></textarea>
+            </div>
+            <button id="sendPrivateButton" class="secondary" type="button" disabled>Send to client</button>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>Message History</h2>
+          <div id="history" class="history">
+            <div class="entry">
+              <div class="entry-header">
+                <span>system</span>
+                <span>waiting for activity</span>
+              </div>
+              <p class="entry-message">Connect to the server to start receiving messages.</p>
+            </div>
+          </div>
+        </section>
+      </section>
+    </section>
+  </main>
+
+  <script>
+    const DEFAULT_SERVER_URL = 'ws://localhost:8080';
+    const SERVER_URL_STORAGE_KEY = 'raund3-server-url';
+
+    const statusBadge = document.getElementById('statusBadge');
+    const clientIdValue = document.getElementById('clientIdValue');
+    const clientsList = document.getElementById('clientsList');
+    const connectButton = document.getElementById('connectButton');
+    const disconnectButton = document.getElementById('disconnectButton');
+    const serverUrlInput = document.getElementById('serverUrl');
+    const sendBroadcastButton = document.getElementById('sendBroadcastButton');
+    const sendPrivateButton = document.getElementById('sendPrivateButton');
+    const broadcastMessage = document.getElementById('broadcastMessage');
+    const privateMessage = document.getElementById('privateMessage');
+    const targetClient = document.getElementById('targetClient');
+    const history = document.getElementById('history');
+
+    let socket = null;
+    let currentClientId = '';
+    let currentClients = [];
+
+    function readStoredServerUrl() {
+      try {
+        const storedValue = window.localStorage.getItem(SERVER_URL_STORAGE_KEY);
+
+        if (storedValue && storedValue.trim()) {
+          return storedValue.trim();
+        }
+      } catch (error) {
+      }
+
+      return DEFAULT_SERVER_URL;
+    }
+
+    function getServerUrl() {
+      const value = serverUrlInput.value.trim();
+      return value || DEFAULT_SERVER_URL;
+    }
+
+    function persistServerUrl(serverUrl) {
+      serverUrlInput.value = serverUrl;
+
+      try {
+        window.localStorage.setItem(SERVER_URL_STORAGE_KEY, serverUrl);
+      } catch (error) {
+      }
+    }
+
+    function formatTime(timestamp) {
+      const date = timestamp ? new Date(timestamp) : new Date();
+
+      if (Number.isNaN(date.getTime())) {
+        return String(timestamp);
+      }
+
+      return date.toLocaleString();
+    }
+
+    function setStatus(state) {
+      statusBadge.dataset.state = state;
+      statusBadge.textContent = state;
+    }
+
+    function updateControls() {
+      const isConnected = socket && socket.readyState === WebSocket.OPEN;
+      const isConnecting = socket && socket.readyState === WebSocket.CONNECTING;
+      const hasTarget = targetClient.value !== '';
+
+      connectButton.disabled = isConnected || isConnecting;
+      disconnectButton.disabled = !socket || socket.readyState === WebSocket.CLOSED;
+      serverUrlInput.disabled = Boolean(isConnected || isConnecting);
+      sendBroadcastButton.disabled = !isConnected;
+      targetClient.disabled = !isConnected;
+      sendPrivateButton.disabled = !isConnected || !hasTarget;
+    }
+
+    function renderClients() {
+      clientsList.innerHTML = '';
+
+      if (currentClients.length === 0) {
+        const emptyItem = document.createElement('li');
+        emptyItem.className = 'empty-state';
+        emptyItem.textContent = 'No active clients yet.';
+        clientsList.appendChild(emptyItem);
+      } else {
+        currentClients.forEach((clientId) => {
+          const item = document.createElement('li');
+          item.textContent = clientId === currentClientId ? clientId + ' (you)' : clientId;
+          clientsList.appendChild(item);
+        });
+      }
+
+      const previousValue = targetClient.value;
+      targetClient.innerHTML = '<option value="">Select a client</option>';
+
+      currentClients
+        .filter((clientId) => clientId !== currentClientId)
+        .forEach((clientId) => {
+          const option = document.createElement('option');
+          option.value = clientId;
+          option.textContent = clientId;
+          targetClient.appendChild(option);
+        });
+
+      if (currentClients.includes(previousValue) && previousValue !== currentClientId) {
+        targetClient.value = previousValue;
+      }
+
+      updateControls();
+    }
+
+    function appendEntry(kind, title, message, timestamp) {
+      if (history.firstElementChild && history.children.length === 1) {
+        const onlyEntry = history.firstElementChild;
+        const initialMessage = onlyEntry.querySelector('.entry-message');
+
+        if (initialMessage && initialMessage.textContent === 'Connect to the server to start receiving messages.') {
+          history.innerHTML = '';
+        }
+      }
+
+      const entry = document.createElement('div');
+      entry.className = 'entry' + (kind === 'error' ? ' error' : '');
+
+      const header = document.createElement('div');
+      header.className = 'entry-header';
+
+      const titleNode = document.createElement('span');
+      titleNode.textContent = title;
+
+      const timeNode = document.createElement('span');
+      timeNode.textContent = formatTime(timestamp);
+
+      const content = document.createElement('p');
+      content.className = 'entry-message';
+      content.textContent = message;
+
+      header.appendChild(titleNode);
+      header.appendChild(timeNode);
+      entry.appendChild(header);
+      entry.appendChild(content);
+      history.prepend(entry);
+    }
+
+    function resetState() {
+      currentClientId = '';
+      currentClients = [];
+      clientIdValue.textContent = 'not assigned yet';
+      targetClient.value = '';
+      renderClients();
+    }
+
+    function safeParse(data) {
+      try {
+        return JSON.parse(data);
+      } catch (error) {
+        appendEntry('error', 'server', 'Received invalid JSON from server.', new Date().toISOString());
+        return null;
+      }
+    }
+
+    function getMessageText(payload) {
+      if (typeof payload.message !== 'undefined') {
+        return String(payload.message ?? '');
+      }
+
+      if (typeof payload.text !== 'undefined') {
+        return String(payload.text ?? '');
+      }
+
+      return '';
+    }
+
+    function connect() {
+      if (socket && (socket.readyState === WebSocket.OPEN || socket.readyState === WebSocket.CONNECTING)) {
+        return;
+      }
+
+      const serverUrl = getServerUrl();
+      persistServerUrl(serverUrl);
+      setStatus('connecting');
+      appendEntry('system', 'system', 'Connecting to ' + serverUrl, new Date().toISOString());
+      socket = new WebSocket(serverUrl);
+      updateControls();
+
+      socket.addEventListener('open', () => {
+        setStatus('connected');
+        appendEntry('system', 'system', 'Connected to ' + serverUrl, new Date().toISOString());
+        updateControls();
+      });
+
+      socket.addEventListener('message', (event) => {
+        const payload = safeParse(event.data);
+
+        if (!payload) {
+          return;
+        }
+
+        if (payload.type === 'welcome') {
+          currentClientId = payload.clientId || '';
+          currentClients = Array.isArray(payload.clients) ? payload.clients : [];
+          clientIdValue.textContent = currentClientId || 'not assigned yet';
+          renderClients();
+          appendEntry('system', 'welcome', 'Assigned clientId: ' + currentClientId, new Date().toISOString());
+          return;
+        }
+
+        if (payload.type === 'clients') {
+          currentClients = Array.isArray(payload.clients) ? payload.clients : [];
+          renderClients();
+          appendEntry(
+            'system',
+            'clients',
+            'Active clients: ' + (currentClients.length > 0 ? currentClients.join(', ') : 'none'),
+            new Date().toISOString()
+          );
+          return;
+        }
+
+        if (payload.type === 'message') {
+          const direction = payload.mode === 'private'
+            ? 'private ' + payload.from + ' -> ' + payload.to
+            : 'broadcast from ' + payload.from;
+          appendEntry('message', direction, getMessageText(payload), payload.timestamp);
+          return;
+        }
+
+        if (payload.type === 'error') {
+          const details = payload.targetClientId
+            ? payload.message + ' (' + payload.targetClientId + ')'
+            : payload.message;
+          appendEntry('error', 'error', details, new Date().toISOString());
+          return;
+        }
+
+        appendEntry('error', 'server', 'Unknown payload: ' + JSON.stringify(payload), new Date().toISOString());
+      });
+
+      socket.addEventListener('error', () => {
+        setStatus('error');
+        appendEntry('error', 'system', 'Connection error. Check whether the server is running.', new Date().toISOString());
+        updateControls();
+      });
+
+      socket.addEventListener('close', () => {
+        setStatus('disconnected');
+        appendEntry('system', 'system', 'Disconnected from ' + serverUrl, new Date().toISOString());
+        socket = null;
+        resetState();
+        updateControls();
+      });
+    }
+
+    function disconnect() {
+      if (!socket) {
+        return;
+      }
+
+      socket.close();
+    }
+
+    function sendPayload(payload) {
+      if (!socket || socket.readyState !== WebSocket.OPEN) {
+        appendEntry('error', 'client', 'WebSocket connection is not open.', new Date().toISOString());
+        return;
+      }
+
+      socket.send(JSON.stringify(payload));
+    }
+
+    connectButton.addEventListener('click', connect);
+    disconnectButton.addEventListener('click', disconnect);
+    targetClient.addEventListener('change', updateControls);
+
+    sendBroadcastButton.addEventListener('click', () => {
+      const message = broadcastMessage.value.trim();
+
+      if (!message) {
+        appendEntry('error', 'client', 'Enter a broadcast message first.', new Date().toISOString());
+        return;
+      }
+
+      sendPayload({
+        type: 'message',
+        to: 'all',
+        message
+      });
+
+      broadcastMessage.value = '';
+    });
+
+    sendPrivateButton.addEventListener('click', () => {
+      const to = targetClient.value;
+      const message = privateMessage.value.trim();
+
+      if (!to) {
+        appendEntry('error', 'client', 'Select a target client first.', new Date().toISOString());
+        return;
+      }
+
+      if (!message) {
+        appendEntry('error', 'client', 'Enter a private message first.', new Date().toISOString());
+        return;
+      }
+
+      sendPayload({
+        type: 'message',
+        to,
+        message
+      });
+
+      privateMessage.value = '';
+    });
+
+    persistServerUrl(readStoredServerUrl());
+    updateControls();
+  </script>
+</body>
+</html>

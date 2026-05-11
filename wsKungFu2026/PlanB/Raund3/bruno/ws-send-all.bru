@@ -1,0 +1,22 @@
+meta {
+  name: ws-send-all
+  type: ws
+  seq: 3
+}
+
+ws {
+  url: ws://localhost:8080
+  body: ws
+  auth: none
+}
+
+body:ws {
+  name: message 1
+  type: json
+  content: '''
+    {
+      "type": "broadcast",
+      "message": "Hello everyone from Bruno"
+    }
+  '''
+}

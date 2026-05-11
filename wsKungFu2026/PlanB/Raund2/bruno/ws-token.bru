@@ -1,0 +1,20 @@
+meta {
+  name: ws-token
+  type: ws
+  seq: 2
+}
+
+ws {
+  url: wss://localhost:8080
+}
+
+headers {
+  x-token: secret123
+}
+
+body:ws {
+  name: message 1
+  content: '''
+Hello from Bruno token flow
+'''
+}

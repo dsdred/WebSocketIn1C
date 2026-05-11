@@ -1,0 +1,18 @@
+meta {
+  name: ws-invalid-message
+  type: ws
+  seq: 5
+}
+
+ws {
+  url: ws://localhost:8080
+}
+
+body:ws {
+  name: message 1
+  content: '''
+{
+  "type": "unknown"
+}
+'''
+}

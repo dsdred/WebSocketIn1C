@@ -1,0 +1,6 @@
+{
+  "port": 8080,
+  "inactiveTimeoutMs": 30000,
+  "pingIntervalMs": 10000,
+  "targetScore": 100
+}

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ConfigDumpInfo xmlns="http://v8.1c.ru/8.3/xcf/dumpinfo" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" format="Hierarchical" version="2.20">
+	<ConfigVersions>
+		<Metadata name="Configuration.Конфигурация" id="127444c8-a490-4f83-93ab-2407f6683271" configVersion="d2c9709779b5224e983e8d61c8e77e8e00000000"/>
+		<Metadata name="DataProcessor.PAPI_WebSocketСоединения" id="353ff705-f9e6-41fb-a268-95947269605d" configVersion="8d8b57805d9c24449ff31446fd52fd1b00000000"/>
+		<Metadata name="DataProcessor.PAPI_WebSocketСоединения.Form.Форма" id="376b7797-aa67-4dbb-901d-21eaf6458d0c" configVersion="d9fa5097da631b499615e1f08405410600000000"/>
+		<Metadata name="DataProcessor.PAPI_WebSocketСоединения.Form.Форма.Form" id="376b7797-aa67-4dbb-901d-21eaf6458d0c.0" configVersion="565cf6422071c441a863bd797fbbd8d100000000"/>
+		<Metadata name="DataProcessor.PAPI_WebSocketСоединения.ObjectModule" id="353ff705-f9e6-41fb-a268-95947269605d.0" configVersion="174c7b25cab6ea4997782a8881fa6f3500000000"/>
+		<Metadata name="DataProcessor.WS_GamePusMinus" id="c2e8465d-c445-4fc3-8b78-a2fd6cd601c9" configVersion="743e5edc0199484c96b5cfe47736b64d00000000"/>
+		<Metadata name="DataProcessor.WS_GamePusMinus.Form.Форма" id="c37f1477-3a33-4bb4-b966-f8ff483b1cac" configVersion="b6c510830591434e92c64456cd9ddb3500000000"/>
+		<Metadata name="DataProcessor.WS_GamePusMinus.Form.Форма.Form" id="c37f1477-3a33-4bb4-b966-f8ff483b1cac.0" configVersion="b541a65d236e294cb97a1ce4a63b98f300000000"/>
+		<Metadata name="DataProcessor.WS_Секреты" id="6a92ca56-7248-4ef6-a8df-5729926f1a07" configVersion="526040abba00ec488e0fce7ff23fa02c00000000"/>
+		<Metadata name="DataProcessor.WS_Секреты.Form.Форма" id="e7852bd4-a733-4cd1-99ac-c7eb813f12e8" configVersion="2058113f4a4a62479f010363f8dfe4cc00000000"/>
+		<Metadata name="DataProcessor.WS_Секреты.Form.Форма.Form" id="e7852bd4-a733-4cd1-99ac-c7eb813f12e8.0" configVersion="2352d2faf692074388336aaae637393500000000"/>
+		<Metadata name="Language.Русский" id="58538fed-dadf-4f21-ae11-74deefc5a3c9" configVersion="88e39cb67c11134b81d5a921e950ff4a00000000"/>
+	</ConfigVersions>
+</ConfigDumpInfo>

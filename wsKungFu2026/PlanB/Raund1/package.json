@@ -1,0 +1,15 @@
+{
+  "name": "raund1",
+  "version": "1.0.0",
+  "description": "Minimal WebSocket echo demo with header-based authentication using ws only",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^8.20.0"
+  }
+}

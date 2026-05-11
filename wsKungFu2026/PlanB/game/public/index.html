@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini WebSocket Game</title>
+    <style>
+      :root {
+        --bg-start: #fff4d8;
+        --bg-end: #ffd7a8;
+        --panel: rgba(255, 250, 242, 0.92);
+        --ink: #2f241f;
+        --accent: #c45b12;
+        --accent-soft: #f2b46d;
+        --line: rgba(67, 40, 24, 0.16);
+        --success: #2f7d32;
+        --warning: #a63d40;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(255, 255, 255, 0.8), transparent 30%),
+          linear-gradient(160deg, var(--bg-start), var(--bg-end));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+      }
+
+      .card {
+        width: min(760px, 100%);
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 24px;
+        box-shadow: 0 24px 50px rgba(104, 58, 27, 0.16);
+        backdrop-filter: blur(8px);
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: clamp(1.8rem, 4vw, 2.6rem);
+      }
+
+      .subtitle {
+        margin: 0 0 24px;
+        color: rgba(47, 36, 31, 0.72);
+      }
+
+      .topbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        justify-content: flex-start;
+        margin-bottom: 20px;
+      }
+
+      .status {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.65);
+        border: 1px solid var(--line);
+      }
+
+      .status-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #999;
+      }
+
+      .status-dot.connected {
+        background: var(--success);
+      }
+
+      .status-dot.connecting {
+        background: var(--accent);
+      }
+
+      button {
+        border: 0;
+        border-radius: 14px;
+        cursor: pointer;
+        font: inherit;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 14px;
+        margin-bottom: 20px;
+      }
+
+      .stat {
+        padding: 16px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.6);
+        border: 1px solid var(--line);
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        opacity: 0.7;
+        margin-bottom: 8px;
+      }
+
+      .stat-value {
+        font-size: 1.6rem;
+        font-weight: 700;
+      }
+
+      .play-area {
+        display: grid;
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+
+      .action-button {
+        min-height: 100px;
+        font-size: 2.4rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+        color: white;
+        box-shadow: 0 16px 30px rgba(196, 91, 18, 0.28);
+        transition: transform 0.16s ease, box-shadow 0.16s ease;
+      }
+
+      .action-button:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 20px 34px rgba(196, 91, 18, 0.32);
+      }
+
+      .action-button:disabled {
+        cursor: not-allowed;
+        opacity: 0.55;
+        box-shadow: none;
+      }
+
+      .victory {
+        display: none;
+        padding: 16px 18px;
+        border-radius: 18px;
+        background: rgba(47, 125, 50, 0.1);
+        border: 1px solid rgba(47, 125, 50, 0.28);
+        color: var(--success);
+        font-weight: 700;
+      }
+
+      .log {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        border-radius: 18px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.6);
+        overflow: hidden;
+      }
+
+      .log li {
+        padding: 12px 14px;
+        border-top: 1px solid var(--line);
+        word-break: break-word;
+      }
+
+      .log li:first-child {
+        border-top: 0;
+      }
+
+      .log time {
+        opacity: 0.55;
+        margin-right: 8px;
+      }
+
+      .error {
+        color: var(--warning);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <h1>Mini WebSocket Game</h1>
+      <p class="subtitle">Откройте несколько копий файла и тяните общий счёт в сторону своей команды.</p>
+
+      <div class="topbar">
+        <div class="status">
+          <span id="status-dot" class="status-dot"></span>
+          <span id="status-text">disconnected</span>
+        </div>
+      </div>
+
+      <section class="grid">
+        <div class="stat">
+          <div class="stat-label">Команда</div>
+          <div id="team-value" class="stat-value">-</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Общий score</div>
+          <div id="score-value" class="stat-value">0</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Цель</div>
+          <div id="target-value" class="stat-value">100</div>
+        </div>
+      </section>
+
+      <section class="play-area">
+        <button id="action-button" class="action-button" type="button" disabled>?</button>
+        <div id="victory-box" class="victory"></div>
+      </section>
+
+      <ul id="log" class="log"></ul>
+    </main>
+
+    <script>
+      const WS_URL = "ws://localhost:8080";
+
+      const actionButton = document.getElementById("action-button");
+      const teamValue = document.getElementById("team-value");
+      const scoreValue = document.getElementById("score-value");
+      const targetValue = document.getElementById("target-value");
+      const statusText = document.getElementById("status-text");
+      const statusDot = document.getElementById("status-dot");
+      const victoryBox = document.getElementById("victory-box");
+      const logList = document.getElementById("log");
+
+      let socket = null;
+      let currentTeam = null;
+      let victoryVisible = false;
+
+      function addLog(message, isError = false) {
+        const item = document.createElement("li");
+        if (isError) {
+          item.classList.add("error");
+        }
+
+        const time = new Date().toLocaleTimeString();
+        item.innerHTML = `<time>${time}</time><span>${message}</span>`;
+        logList.prepend(item);
+      }
+
+      function setStatus(state) {
+        statusText.textContent = state;
+        statusDot.className = "status-dot";
+
+        if (state === "connected") {
+          statusDot.classList.add("connected");
+        }
+
+        if (state === "connecting") {
+          statusDot.classList.add("connecting");
+        }
+      }
+
+      function updateActionButton() {
+        if (!currentTeam) {
+          actionButton.textContent = "?";
+          actionButton.disabled = true;
+          return;
+        }
+
+        actionButton.textContent = currentTeam === "plus" ? "+" : "-";
+        actionButton.disabled = !socket || socket.readyState !== WebSocket.OPEN;
+      }
+
+      function hideVictory() {
+        victoryVisible = false;
+        victoryBox.style.display = "none";
+        victoryBox.textContent = "";
+      }
+
+      function showVictory(message) {
+        victoryVisible = true;
+        victoryBox.textContent = message;
+        victoryBox.style.display = "block";
+      }
+
+      function connect() {
+        if (socket && (socket.readyState === WebSocket.OPEN || socket.readyState === WebSocket.CONNECTING)) {
+          return;
+        }
+
+        setStatus("connecting");
+        socket = new WebSocket(WS_URL);
+
+        socket.addEventListener("open", () => {
+          setStatus("connected");
+          updateActionButton();
+          addLog("Соединение установлено.");
+        });
+
+        socket.addEventListener("message", (event) => {
+          let payload;
+
+          try {
+            payload = JSON.parse(event.data);
+          } catch (error) {
+            addLog("Получен некорректный JSON от сервера.", true);
+            return;
+          }
+
+          if (payload.type === "welcome") {
+            currentTeam = payload.team;
+            teamValue.textContent = payload.team;
+            scoreValue.textContent = payload.score;
+            targetValue.textContent = payload.targetScore;
+            updateActionButton();
+            addLog(`Вы в команде ${payload.team}.`);
+            return;
+          }
+
+          if (payload.type === "state") {
+            scoreValue.textContent = payload.score;
+            targetValue.textContent = payload.targetScore;
+            return;
+          }
+
+          if (payload.type === "victory") {
+            scoreValue.textContent = payload.score;
+            targetValue.textContent = payload.targetScore;
+            showVictory(payload.message);
+            addLog(payload.message);
+            return;
+          }
+
+          if (payload.type === "error") {
+            addLog(`Ошибка сервера: ${payload.message}`, true);
+            return;
+          }
+
+          addLog(`Неизвестное сообщение: ${event.data}`, true);
+        });
+
+        socket.addEventListener("close", (event) => {
+          setStatus("disconnected");
+          updateActionButton();
+          addLog(`Соединение закрыто. Код: ${event.code}.`);
+        });
+
+        socket.addEventListener("error", () => {
+          addLog("Ошибка соединения WebSocket.", true);
+        });
+      }
+
+      actionButton.addEventListener("click", () => {
+        if (!socket || socket.readyState !== WebSocket.OPEN || !currentTeam) {
+          addLog("Нет активного соединения для отправки действия.", true);
+          return;
+        }
+
+        if (victoryVisible) {
+          hideVictory();
+        }
+
+        const payload = {
+          type: "action",
+          action: currentTeam
+        };
+
+        socket.send(JSON.stringify(payload));
+      });
+
+      connect();
+    </script>
+  </body>
+</html>

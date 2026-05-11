@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WSS Echo Demo</title>
+    <style>
+      :root {
+        --bg: #f2efe8;
+        --panel: #fffdf8;
+        --panel-border: #d8d1c5;
+        --ink: #1f2933;
+        --muted: #6b7280;
+        --accent: #0f766e;
+        --accent-soft: #d7f4ef;
+        --danger: #b42318;
+        --danger-soft: #fde7e5;
+        --warn: #9a6700;
+        --warn-soft: #fff3cd;
+        --shadow: 0 18px 40px rgba(31, 41, 51, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(15, 118, 110, 0.12), transparent 28%),
+          linear-gradient(180deg, #f7f4ed 0%, var(--bg) 100%);
+      }
+
+      .page {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 32px 20px 48px;
+      }
+
+      .hero {
+        margin-bottom: 24px;
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        font-size: clamp(2rem, 4vw, 3rem);
+        line-height: 1.05;
+      }
+
+      .subtitle {
+        margin: 0;
+        color: var(--muted);
+        max-width: 760px;
+        line-height: 1.5;
+      }
+
+      .warning {
+        margin-top: 18px;
+        padding: 14px 16px;
+        border: 1px solid #e7c56d;
+        border-radius: 14px;
+        background: var(--warn-soft);
+        color: #5b4300;
+        line-height: 1.5;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+        gap: 20px;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--panel-border);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+      }
+
+      .section {
+        padding: 22px;
+      }
+
+      .section + .section {
+        border-top: 1px solid var(--panel-border);
+      }
+
+      h2 {
+        margin: 0 0 16px;
+        font-size: 1.15rem;
+      }
+
+      .field-group {
+        display: grid;
+        gap: 14px;
+      }
+
+      .inline-options {
+        display: grid;
+        gap: 10px;
+      }
+
+      .radio {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        padding: 10px 12px;
+        border: 1px solid var(--panel-border);
+        border-radius: 12px;
+        background: #fcfaf5;
+      }
+
+      label {
+        display: block;
+        font-size: 0.94rem;
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+
+      input,
+      button {
+        width: 100%;
+        border-radius: 12px;
+        font: inherit;
+      }
+
+      input {
+        padding: 12px 14px;
+        border: 1px solid #c8c2b7;
+        background: white;
+      }
+
+      input:focus {
+        outline: 2px solid rgba(15, 118, 110, 0.18);
+        border-color: var(--accent);
+      }
+
+      button {
+        border: none;
+        padding: 13px 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.15s ease, opacity 0.15s ease, background 0.15s ease;
+      }
+
+      button:hover:not(:disabled) {
+        transform: translateY(-1px);
+      }
+
+      button:disabled {
+        cursor: not-allowed;
+        opacity: 0.55;
+      }
+
+      .primary {
+        background: var(--accent);
+        color: white;
+      }
+
+      .secondary {
+        background: #e6ecea;
+        color: var(--ink);
+      }
+
+      .stack {
+        display: grid;
+        gap: 12px;
+      }
+
+      .status-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: #ece8df;
+        font-weight: 700;
+      }
+
+      .status-badge::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #9aa3af;
+      }
+
+      .status-badge.connected {
+        background: var(--accent-soft);
+        color: #075e58;
+      }
+
+      .status-badge.connected::before {
+        background: #0f766e;
+      }
+
+      .status-badge.error {
+        background: var(--danger-soft);
+        color: var(--danger);
+      }
+
+      .status-badge.error::before {
+        background: var(--danger);
+      }
+
+      .status-text {
+        color: var(--muted);
+        line-height: 1.4;
+      }
+
+      .message-form {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 140px;
+        gap: 12px;
+      }
+
+      .history {
+        display: grid;
+        gap: 12px;
+        max-height: 480px;
+        overflow-y: auto;
+        padding-right: 6px;
+      }
+
+      .history-empty {
+        padding: 20px;
+        border: 1px dashed var(--panel-border);
+        border-radius: 14px;
+        color: var(--muted);
+        background: #fbfaf7;
+      }
+
+      .message {
+        padding: 14px 16px;
+        border-radius: 14px;
+        border: 1px solid var(--panel-border);
+        background: #fffefb;
+      }
+
+      .message.outgoing {
+        border-color: #bad9d5;
+        background: #f1fbf9;
+      }
+
+      .message.incoming {
+        border-color: #d4d7dd;
+        background: #f6f7f9;
+      }
+
+      .message.system {
+        border-color: #e7c56d;
+        background: #fff7e0;
+      }
+
+      .message-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 8px;
+        font-size: 0.86rem;
+      }
+
+      .message-kind {
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+
+      .message-time {
+        color: var(--muted);
+      }
+
+      .message-body {
+        white-space: pre-wrap;
+        word-break: break-word;
+        line-height: 1.5;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      @media (max-width: 820px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+
+        .message-form {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <h1>WSS Echo Demo</h1>
+        <p class="subtitle">
+          Клиент для проверки защищенного echo-сервера на `wss://localhost:8080`.
+          Основная авторизация сервера остается через `x-*` headers для Bruno и
+          Node.js-клиентов, а браузерный demo использует совместимый fallback
+          через `Sec-WebSocket-Protocol`.
+        </p>
+        <div class="warning">
+          Сначала откройте `https://localhost:8080` и подтвердите self-signed
+          certificate в браузере. Стандартный браузерный API `WebSocket` не
+          умеет отправлять произвольные headers вроде `x-login` и `x-token`,
+          поэтому HTML-клиент передает те же данные через subprotocol. Для
+          точной проверки header-based auth используйте Bruno или Node.js с
+          библиотекой `ws`.
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="card">
+          <div class="section">
+            <h2>Аутентификация</h2>
+            <div class="field-group">
+              <div class="inline-options">
+                <label class="radio">
+                  <input type="radio" name="authMethod" value="login" checked />
+                  <span>Login / password</span>
+                </label>
+                <label class="radio">
+                  <input type="radio" name="authMethod" value="token" />
+                  <span>Token</span>
+                </label>
+              </div>
+
+              <div id="loginFields" class="stack">
+                <div>
+                  <label for="login">Login</label>
+                  <input id="login" type="text" value="admin" autocomplete="off" />
+                </div>
+                <div>
+                  <label for="password">Password</label>
+                  <input id="password" type="password" value="123" />
+                </div>
+              </div>
+
+              <div id="tokenFields" class="stack hidden">
+                <div>
+                  <label for="token">Token</label>
+                  <input id="token" type="text" value="secret123" autocomplete="off" />
+                </div>
+              </div>
+
+              <button id="connectButton" class="primary">Подключиться</button>
+              <button id="disconnectButton" class="secondary" disabled>Отключиться</button>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2>Состояние</h2>
+            <div class="stack">
+              <div class="status-row">
+                <div id="statusBadge" class="status-badge">Disconnected</div>
+              </div>
+              <div id="statusText" class="status-text">
+                Защищенное соединение еще не установлено.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="section">
+            <h2>Сообщения</h2>
+            <div class="stack">
+              <form id="messageForm" class="message-form">
+                <input
+                  id="messageInput"
+                  type="text"
+                  placeholder="Введите сообщение и нажмите Enter"
+                  autocomplete="off"
+                  disabled
+                />
+                <button id="sendButton" class="primary" type="submit" disabled>
+                  Отправить
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2>История</h2>
+            <div id="history" class="history">
+              <div id="historyEmpty" class="history-empty">
+                История сообщений появится после подключения к серверу.
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      const WSS_URL = 'wss://localhost:8080';
+      const HTTPS_URL = 'https://localhost:8080';
+
+      const authMethodInputs = Array.from(document.querySelectorAll('input[name="authMethod"]'));
+      const loginFields = document.getElementById('loginFields');
+      const tokenFields = document.getElementById('tokenFields');
+      const loginInput = document.getElementById('login');
+      const passwordInput = document.getElementById('password');
+      const tokenInput = document.getElementById('token');
+      const connectButton = document.getElementById('connectButton');
+      const disconnectButton = document.getElementById('disconnectButton');
+      const statusBadge = document.getElementById('statusBadge');
+      const statusText = document.getElementById('statusText');
+      const history = document.getElementById('history');
+      const historyEmpty = document.getElementById('historyEmpty');
+      const messageForm = document.getElementById('messageForm');
+      const messageInput = document.getElementById('messageInput');
+      const sendButton = document.getElementById('sendButton');
+
+      let socket = null;
+
+      const getSelectedAuthMethod = () =>
+        authMethodInputs.find((input) => input.checked)?.value || 'login';
+
+      const updateAuthVisibility = () => {
+        const selectedMethod = getSelectedAuthMethod();
+        loginFields.classList.toggle('hidden', selectedMethod !== 'login');
+        tokenFields.classList.toggle('hidden', selectedMethod !== 'token');
+      };
+
+      const setStatus = (variant, label, text) => {
+        statusBadge.className = 'status-badge';
+
+        if (variant) {
+          statusBadge.classList.add(variant);
+        }
+
+        statusBadge.textContent = label;
+        statusText.textContent = text;
+      };
+
+      const setMessageControlsState = (connected) => {
+        messageInput.disabled = !connected;
+        sendButton.disabled = !connected;
+        disconnectButton.disabled = !connected;
+        connectButton.disabled = connected;
+      };
+
+      const now = () =>
+        new Intl.DateTimeFormat('ru-RU', {
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit'
+        }).format(new Date());
+
+      const addMessage = (kind, title, body) => {
+        if (history.contains(historyEmpty)) {
+          historyEmpty.remove();
+        }
+
+        const item = document.createElement('article');
+        item.className = `message ${kind}`;
+
+        const header = document.createElement('div');
+        header.className = 'message-header';
+
+        const label = document.createElement('div');
+        label.className = 'message-kind';
+        label.textContent = title;
+
+        const time = document.createElement('div');
+        time.className = 'message-time';
+        time.textContent = now();
+
+        const content = document.createElement('div');
+        content.className = 'message-body';
+        content.textContent = body;
+
+        header.append(label, time);
+        item.append(header, content);
+        history.prepend(item);
+      };
+
+      const buildProtocols = () => {
+        const method = getSelectedAuthMethod();
+
+        if (method === 'login') {
+          return [`demo.login.${loginInput.value}.${passwordInput.value}`];
+        }
+
+        return [`demo.token.${tokenInput.value}`];
+      };
+
+      const connect = () => {
+        if (socket && socket.readyState === WebSocket.OPEN) {
+          return;
+        }
+
+        if (socket && socket.readyState === WebSocket.CONNECTING) {
+          return;
+        }
+
+        setStatus('', 'Connecting', 'Открываем защищенное WSS-соединение...');
+
+        try {
+          socket = new WebSocket(WSS_URL, buildProtocols());
+        } catch (error) {
+          setStatus('error', 'Error', `Не удалось создать соединение: ${error.message}`);
+          addMessage('system', 'System', `Ошибка создания WebSocket: ${error.message}`);
+          return;
+        }
+
+        socket.addEventListener('open', () => {
+          setStatus(
+            'connected',
+            'Connected',
+            'Защищенное соединение открыто. Можно отправлять сообщения на echo-сервер.'
+          );
+          setMessageControlsState(true);
+          addMessage('system', 'System', `Соединение с сервером установлено: ${WSS_URL}`);
+        });
+
+        socket.addEventListener('message', (event) => {
+          try {
+            const parsed = JSON.parse(event.data);
+
+            if (parsed && parsed.status === 'connected') {
+              addMessage('system', 'Server', parsed.message);
+              return;
+            }
+          } catch (error) {
+            // Non-JSON messages are regular echo payloads.
+          }
+
+          addMessage('incoming', 'Incoming', event.data);
+        });
+
+        socket.addEventListener('close', (event) => {
+          const authError =
+            event.code === 4001
+              ? 'Авторизация отклонена сервером.'
+              : `Соединение закрыто. Код: ${event.code}. Причина: ${event.reason || 'нет'}.`;
+
+          const statusVariant = event.code === 4001 ? 'error' : '';
+          setStatus(statusVariant, 'Disconnected', authError);
+          setMessageControlsState(false);
+          addMessage('system', 'System', authError);
+          socket = null;
+        });
+
+        socket.addEventListener('error', () => {
+          setStatus(
+            'error',
+            'Error',
+            `Ошибка WSS. Проверьте, что сервер запущен на ${WSS_URL} и сертификат принят в браузере через ${HTTPS_URL}.`
+          );
+          addMessage(
+            'system',
+            'System',
+            `Произошла ошибка WSS. Сначала откройте ${HTTPS_URL} и подтвердите self-signed certificate.`
+          );
+        });
+      };
+
+      const disconnect = () => {
+        if (!socket) {
+          return;
+        }
+
+        socket.close(1000, 'Client disconnect');
+      };
+
+      const sendMessage = () => {
+        const message = messageInput.value.trim();
+
+        if (!message || !socket || socket.readyState !== WebSocket.OPEN) {
+          return;
+        }
+
+        socket.send(message);
+        addMessage('outgoing', 'Outgoing', message);
+        messageInput.value = '';
+        messageInput.focus();
+      };
+
+      authMethodInputs.forEach((input) => {
+        input.addEventListener('change', updateAuthVisibility);
+      });
+
+      connectButton.addEventListener('click', connect);
+      disconnectButton.addEventListener('click', disconnect);
+
+      messageForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        sendMessage();
+      });
+
+      messageInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          sendMessage();
+        }
+      });
+
+      updateAuthVisibility();
+      setMessageControlsState(false);
+    </script>
+  </body>
+</html>

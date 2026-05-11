@@ -1,0 +1,21 @@
+meta {
+  name: ws-invalid-auth
+  type: ws
+  seq: 3
+}
+
+ws {
+  url: wss://localhost:8080
+}
+
+headers {
+  x-login: wrong
+  x-password: wrong
+}
+
+body:ws {
+  name: message 1
+  content: '''
+This message should not be echoed
+'''
+}

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ConfigDumpInfo xmlns="http://v8.1c.ru/8.3/xcf/dumpinfo" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" format="Hierarchical" version="2.20">
+	<ConfigVersions>
+		<Metadata name="Configuration.Конфигурация" id="127444c8-a490-4f83-93ab-2407f6683271" configVersion="aef6e5488505fc4b9c09998b467156be00000000"/>
+		<Metadata name="DataProcessor.PAPI_WebSocketСоединения" id="353ff705-f9e6-41fb-a268-95947269605d" configVersion="d9f4fef5bfe85f489324d4685bd3078f00000000"/>
+		<Metadata name="DataProcessor.PAPI_WebSocketСоединения.Form.Форма" id="376b7797-aa67-4dbb-901d-21eaf6458d0c" configVersion="a1748b4f05d3af4f893da0657a10db6800000000"/>
+		<Metadata name="DataProcessor.PAPI_WebSocketСоединения.Form.Форма.Form" id="376b7797-aa67-4dbb-901d-21eaf6458d0c.0" configVersion="b4e471c02395554d8e8ceb04f2b4992800000000"/>
+		<Metadata name="DataProcessor.PAPI_WebSocketСоединения.ObjectModule" id="353ff705-f9e6-41fb-a268-95947269605d.0" configVersion="679d72e9c16b3742b47cd926776f992200000000"/>
+		<Metadata name="DataProcessor.WS_Секреты" id="6a92ca56-7248-4ef6-a8df-5729926f1a07" configVersion="d0565dddb7403d488703a771d562370d00000000"/>
+		<Metadata name="DataProcessor.WS_Секреты.Form.Форма" id="e7852bd4-a733-4cd1-99ac-c7eb813f12e8" configVersion="3fc357792bf71445a264be8174b3475c00000000"/>
+		<Metadata name="DataProcessor.WS_Секреты.Form.Форма.Form" id="e7852bd4-a733-4cd1-99ac-c7eb813f12e8.0" configVersion="f3375ab1eda0464dbbcbef087069b60b00000000"/>
+		<Metadata name="Language.Русский" id="58538fed-dadf-4f21-ae11-74deefc5a3c9" configVersion="888f7be61161094ea8224efeb563ead800000000"/>
+		<Metadata name="WebSocketClient.WebSocketRaund1Token" id="b047a0cf-5ec0-4641-9c7f-c6854ff16d86" configVersion="ea86e6c1e777f743837bba9efc76ea3100000000"/>
+		<Metadata name="WebSocketClient.WebSocketRaund1Token.Module" id="b047a0cf-5ec0-4641-9c7f-c6854ff16d86.0" configVersion="84dc832bdb851e4c9edbb64f4458240200000000"/>
+		<Metadata name="WebSocketClient.WebSocketRaund1login" id="625e3df5-1427-46d6-bb87-f0198f61319a" configVersion="f29b56f9d1d5f745a50c1b1a71ec6b9b00000000"/>
+		<Metadata name="WebSocketClient.WebSocketRaund1login.Module" id="625e3df5-1427-46d6-bb87-f0198f61319a.0" configVersion="ca821b949de62a4bafa0f026568730b600000000"/>
+	</ConfigVersions>
+</ConfigDumpInfo>

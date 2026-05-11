@@ -1,0 +1,22 @@
+meta {
+  name: ws-minus-action
+  type: ws
+  seq: 4
+}
+
+ws {
+  url: ws://localhost:8080
+  body: ws
+  auth: none
+}
+
+body:ws {
+  name: message 1
+  type: json
+  content: '''
+    {
+      "type": "action",
+      "action": "minus"
+    }
+  '''
+}

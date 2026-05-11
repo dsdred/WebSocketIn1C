@@ -1,0 +1,23 @@
+meta {
+  name: ws-send-to-missing-client
+  type: ws
+  seq: 5
+}
+
+ws {
+  url: ws://localhost:8080
+  body: ws
+  auth: none
+}
+
+body:ws {
+  name: message 1
+  type: json
+  content: '''
+    {
+      "type": "private",
+      "to": "client-2",
+      "message": "This client does not exist"
+    }
+  '''
+}

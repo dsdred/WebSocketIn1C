@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ConfigDumpInfo xmlns="http://v8.1c.ru/8.3/xcf/dumpinfo" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" format="Hierarchical" version="2.20">
+	<ConfigVersions>
+		<Metadata name="CommonModule.WebsocketКлиент" id="35a5a630-afd9-4c39-8bf5-5a1dac36216c" configVersion="fd09aeddad702d4388247d34150c01cb00000000"/>
+		<Metadata name="CommonModule.WebsocketКлиент.Module" id="35a5a630-afd9-4c39-8bf5-5a1dac36216c.0" configVersion="3e20c3a9ea292d44957b5bc97e2efa3c00000000"/>
+		<Metadata name="CommonModule.WebsocketСервер" id="0a308c67-9bd7-4cf4-9615-17023f1f85c3" configVersion="ea51ec1b310fae4ea0b4cb751164827a00000000"/>
+		<Metadata name="CommonModule.WebsocketСервер.Module" id="0a308c67-9bd7-4cf4-9615-17023f1f85c3.0" configVersion="233638392b2a1641a03a0bd1fb54645600000000"/>
+		<Metadata name="Configuration.Конфигурация" id="127444c8-a490-4f83-93ab-2407f6683271" configVersion="863963da53bdfc4492ecf322f78c561800000000"/>
+		<Metadata name="DataProcessor.PAPI_WebSocketСоединения" id="353ff705-f9e6-41fb-a268-95947269605d" configVersion="e44cd823c8ca6d47981acabd9e59713200000000"/>
+		<Metadata name="DataProcessor.PAPI_WebSocketСоединения.Form.Форма" id="376b7797-aa67-4dbb-901d-21eaf6458d0c" configVersion="46118da1e1a3b146b908a4c2a1f8a35800000000"/>
+		<Metadata name="DataProcessor.PAPI_WebSocketСоединения.Form.Форма.Form" id="376b7797-aa67-4dbb-901d-21eaf6458d0c.0" configVersion="a01f443eb0c6984a81a22881e6856c8c00000000"/>
+		<Metadata name="DataProcessor.PAPI_WebSocketСоединения.ObjectModule" id="353ff705-f9e6-41fb-a268-95947269605d.0" configVersion="9db70e4d6d815c41a443f9aad3f9858e00000000"/>
+		<Metadata name="DataProcessor.WS_Динамический" id="72c55e79-4ee1-46f8-876c-ba212a8ee1d0" configVersion="d1434b52e07d7844a88dde865bbb952a00000000"/>
+		<Metadata name="DataProcessor.WS_Динамический.Form.Форма" id="7f08a7b6-c012-4e68-a335-c70e6966afc0" configVersion="fb1d732ea5ad12478a772c02b69934ac00000000"/>
+		<Metadata name="DataProcessor.WS_Динамический.Form.Форма.Form" id="7f08a7b6-c012-4e68-a335-c70e6966afc0.0" configVersion="8fd31d1904efcb4ba03434687b1a3f9300000000"/>
+		<Metadata name="DataProcessor.WS_Динамический.Form.Форма.Help" id="7f08a7b6-c012-4e68-a335-c70e6966afc0.1" configVersion="182b7b4d0ba81243a21068eea9ffbc8200000000"/>
+		<Metadata name="DataProcessor.WS_Динамический.Help" id="72c55e79-4ee1-46f8-876c-ba212a8ee1d0.1" configVersion="10c524461bb5764cb1c77696309fd3c600000000"/>
+		<Metadata name="DataProcessor.WS_Динамический.ManagerModule" id="72c55e79-4ee1-46f8-876c-ba212a8ee1d0.2" configVersion="a6e19b5a97ac944b81c6df3bf1b4264500000000"/>
+		<Metadata name="DataProcessor.WS_Динамический.ObjectModule" id="72c55e79-4ee1-46f8-876c-ba212a8ee1d0.0" configVersion="f8a54f1acac1a5489a21f72bf5de9e5a00000000"/>
+		<Metadata name="DataProcessor.WS_Секреты" id="6a92ca56-7248-4ef6-a8df-5729926f1a07" configVersion="4faff1576455ed4aafa550156fd7e7c300000000"/>
+		<Metadata name="DataProcessor.WS_Секреты.Form.Форма" id="e7852bd4-a733-4cd1-99ac-c7eb813f12e8" configVersion="df24af409125d541af0d748dfc35476900000000"/>
+		<Metadata name="DataProcessor.WS_Секреты.Form.Форма.Form" id="e7852bd4-a733-4cd1-99ac-c7eb813f12e8.0" configVersion="a16f45bd2da77545b151cf171d8942e800000000"/>
+		<Metadata name="Language.Русский" id="58538fed-dadf-4f21-ae11-74deefc5a3c9" configVersion="a2fe9706fd67cc4799a15620faececf200000000"/>
+		<Metadata name="WebSocketClient.WebSocketRaund1Token" id="b047a0cf-5ec0-4641-9c7f-c6854ff16d86" configVersion="b17efc024277174f926dd6a3e53c2a9900000000"/>
+		<Metadata name="WebSocketClient.WebSocketRaund1Token.Module" id="b047a0cf-5ec0-4641-9c7f-c6854ff16d86.0" configVersion="19a867686836e64fbad39a2b87c29dbf00000000"/>
+		<Metadata name="WebSocketClient.WebSocketRaund1login" id="625e3df5-1427-46d6-bb87-f0198f61319a" configVersion="0e223a8b46f6c9419945f3cc746250b700000000"/>
+		<Metadata name="WebSocketClient.WebSocketRaund1login.Module" id="625e3df5-1427-46d6-bb87-f0198f61319a.0" configVersion="df4860235459a349abd6993e9bc4fb9c00000000"/>
+	</ConfigVersions>
+</ConfigDumpInfo>

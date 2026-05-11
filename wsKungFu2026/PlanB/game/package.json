@@ -1,0 +1,13 @@
+{
+  "name": "kfu2026-websocket-game",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Minimal multiplayer demo game over WebSocket",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.3"
+  }
+}
